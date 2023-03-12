@@ -1,0 +1,28 @@
+  269  xhost +
+  270  apt-get update
+  271  yes | unminimize
+  272  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  273  echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+  274  sudo apt update 
+  275  yes | unminimize
+  276  man hier
+  277  apt-get install gedit kate
+  278  apt-get install -y gedit
+  279  apt-get install -y kate
+  280  gedit
+  281  kate
+  282  apt-get install -y man-db
+  283  apt-get install -y info
+  284  adduser elliot
+  285  adduser angela
+  286  cd /home/
+  287  ls -ltr
+  288  cd ~
+  289  pwd
+  290  cd ~
+  291  clear
+  292  su - elliot
+  293  mkdir /home/elliot/Desktop
+  294  touch /home/elliot/Desktop/hello.txt
+  295  mkdir /home/angela/Music
+  296  touch /home/angela/Music/song.mp3

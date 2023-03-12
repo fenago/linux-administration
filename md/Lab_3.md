@@ -1,28 +1,9 @@
 
-Meet the Editors
-
-First of all, let me tell you something that may surprise you. Linux
-implements what is called \"Everything is a file\" philosophy. This
-means that on your Linux system, everything is represented by a file.
-For example, your hard disk is represented by a file. A running program
-(process) is represented by a file. Even your peripheral devices, such
-as your keyboard, mouse, and printer, are all represented by files.
-
-With that being said, an immediate consequence of \"Everything is a
-file\" philosophy is that Linux administrators spend a substantial
-amount of their time editing and viewing files. And so you will often
-see Linux administrators very proficient at using text editors. And this
-chapter is dedicated to just that. I want you to be very comfortable
-using various text editors in Linux.
-
-There are a lot, and I mean a whole lot, of text editors out there that
-you can use. However, in this chapter, I will cover the most popular
-Linux editors that will get the job done.
+Lab: Meet the Editors
+---------------------
 
 
-Graphical editors -- gedit and kate
-===================================
-
+**Graphical editors -- gedit and kate**
 
 We start with the most basic and simple editors out there. These are the
 graphical editors! If you are using a **GNOME** version of any Linux
@@ -31,16 +12,13 @@ by default. On the other hand, if you are using a **KDE** version of
 Linux, then you will have the text editor [kate] installed by
 default.
 
+**Note:** Make sure to run following command in the terminal first as root user:
 
-**DESKTOP ENVIRONMENT**
+`xhost +`
 
-GNOME and KDE are two examples of desktop environments. Each desktop
-environment implements a different graphical user interface, which is a
-very fancy way of saying that your desktop will look different!
+![](./images/xhost.png)
 
-
-Anyways, there is really not a lot to discuss on graphical editors. They
-are pretty intuitive and easy to use. For example, if you want to view a
+If you want to view a
 text file with [gedit], then you run the [gedit] command
 followed by any filename:
 

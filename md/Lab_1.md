@@ -8,11 +8,11 @@ To access the Linux **Command Line Interface**, you need to open the
 
 Let\'s walk through an example
 to understand and tie everything together. Go ahead and open the
-Terminal by clicking on the Dash and then search [Terminal]. You
-can also use the shortcut *Ctrl*+*Alt*+*T* to open the Terminal. When
+Terminal by clicking on the Dash and then search [Terminal]. When
 the Terminal opens, you will see a new window, as shown in the following
-screenshot.
+screenshot. Run following command in the terminal to switch to `elliot` user:
 
+`su - elliot`
 
 ![](./images/8096d4e8-d7cc-4e3a-bd5d-32568bce32a4.png)
 
