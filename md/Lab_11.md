@@ -1,6 +1,6 @@
 
-Lab: Let\'s Play Find and Seek
-------------------------------
+Lab: Find/Locate Files
+----------------------
 
 In this lab, you will learn two different ways you can use to search and locate files.
 

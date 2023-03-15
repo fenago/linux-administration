@@ -1,6 +1,6 @@
 
-Lab: What\'s Wrong with the Network?
-====================================
+Lab: Basic Networking
+=====================
 
 In this lab, you will learn the basics of Linux networking. You will also
 learn how to check network connectivity between two hosts, and gain a

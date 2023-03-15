@@ -1,5 +1,5 @@
-
-Everyone Needs Disk Space
+Lab: File and Disk Management Tools
+===================================
 
 In this lab, you will learn how to manage your hard disk in Linux.
 You will learn how to create new partitions on your drive. Then you will

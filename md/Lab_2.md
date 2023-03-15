@@ -1,5 +1,7 @@
 
-Climbing the Tree
+Lab: The Linux File System
+==========================
+
 
 In this lab, you will climb a very special tree, which is the Linux
 filesystem. During this climbing journey, you will learn:

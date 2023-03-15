@@ -1,5 +1,5 @@
-
-Create Your Own Commands
+Lab: Creating Aliases
+=====================
 
 Sometimes, you may be having a hard time remembering one command. Other
 times, you will find yourself running a very long command over and over

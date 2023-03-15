@@ -1,5 +1,6 @@
 
-The Power of Sudo
+Lab: The Power of Sudo (su and sudo Commands)
+=============================================
 
 In this lab, you will learn how to give permissions to non-root
 users on the system so they can run privileged commands. In real life,

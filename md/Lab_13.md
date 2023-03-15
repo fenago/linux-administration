@@ -1,6 +1,6 @@
 
-Lab: Kill the Process
----------------------
+Lab: Controlling Processes
+--------------------------
 
 
 Any program that is running on your system is a process. In this

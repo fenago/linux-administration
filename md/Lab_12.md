@@ -1,5 +1,6 @@
+Lab: Managing and Identifying Software Packages
+===============================================
 
-You Got a Package
 
 In this lab, you will learn how to manage software applications on
 your Linux system. You will learn how to use the Debian package manager

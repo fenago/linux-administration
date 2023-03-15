@@ -1,5 +1,6 @@
 
-Controlling the Population
+Lab: Linux File Security
+========================
 
 Linux is a multiuser operating system, which means that many users are
 allowed to access the system at the same time. In real life, you barely

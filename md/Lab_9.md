@@ -1,5 +1,7 @@
 
-Piping and I/O Redirection
+Lab: Piping and I/O Redirection
+===============================
+
 
 One of the main principles in Linux is that *Each program does one thing
 well* and thus, every Linux command is designed to accomplish a single

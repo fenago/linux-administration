@@ -1,6 +1,6 @@
 
-Lab: Meet the Editors
----------------------
+Lab: Linux File Editors
+-----------------------
 
 
 **Graphical editors -- gedit and kate**

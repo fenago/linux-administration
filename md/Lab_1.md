@@ -1,5 +1,5 @@
-Lab: Your First Keystrokes
---------------------------
+Lab: System Administration Overview
+-----------------------------------
 
 To access the Linux **Command Line Interface**, you need to open the
 [Terminal Emulator], which is often referred to as the
@@ -414,7 +414,7 @@ Flags:                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr
 ```
 
 
-\
+
 **UP AND DOWN ARROW KEYS**
 
 You can scroll up and down on your command line history. Every time you

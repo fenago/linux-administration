@@ -1,5 +1,5 @@
-
-Archiving and Compressing Files
+Lab: System Backups
+===================
 
 In this lab, you will learn how to put a group of files together
 into a single archive. You will also learn how to compress an archive

@@ -1,5 +1,7 @@
 
-Analyzing and Manipulating Files
+Lab: Analyzing and Manipulating Files
+=====================================
+
 
 In this lab, you will learn various Linux commands that will help
 you analyze and manipulate files. You will learn how to compare two

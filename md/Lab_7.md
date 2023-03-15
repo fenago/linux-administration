@@ -1,5 +1,6 @@
 
-Who Is Root?
+Lab: Superusers and the Root Login 
+==================================
 
 So far, user [elliot] has been able to do quite a few things on
 the system. However, there are a whole lot of things that user

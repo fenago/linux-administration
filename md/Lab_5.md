@@ -1,6 +1,6 @@
 
-Lab: Read Your Manuals!
-=======================
+Lab: Linux Command Types
+========================
 
 
 All Linux commands must fall into one of these following four
