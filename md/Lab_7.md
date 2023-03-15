@@ -38,18 +38,8 @@ system. [root] is also known as the superuser.
 Accessing the root user
 =======================
 
-
-You can run the [sudo -i] command to access the [root] user
-for the first time on your system:
-
-``` 
-elliot@ubuntu-linux:~$ sudo -i
-[sudo] password for elliot:
-root@ubuntu-linux:~#
-```
-
-You will be prompted to enter your password, and then, all of a sudden,
-you have got superpowers!
+Open new terminal to access the [root] user:
+![](./images/15.png)
 
 Notice how the command prompt changed instead of a dollar sign
 ([\$]), it now shows a [\#] to greet the root user.
@@ -114,13 +104,16 @@ Retype new UNIX password:
 passwd: password updated successfully
 ```
 
+**Note:** Make sure to remember `root` user password for next labs.
+
 Amazing, now exit the [root] user:
 
 ``` 
 root@ubuntu-linux:~# exit 
-logout
+
+elliot@ubuntu-linux:~$ su - elliot 
+
 elliot@ubuntu-linux:~$ whoami 
-elliot
 ```
 
 Now you can use the [su root] command to switch to the
@@ -222,12 +215,10 @@ root@ubuntu-linux:~# pwd
 
 This time I landed in [/root] because I used the dash.
 
-Well, this was a short chapter, but the [root] user certainly
-deserves a whole section by itself. Also, remember that you have got
+You have got
 superpowers when you are the [root] user as you have the
 permission to do anything on your system. And so if you are not very
-careful, you can damage your system, and that\'s why there is a very
-famous Linux meme that says, \"Don\'t drink and root!.\"
+careful, you can damage your system.
 
 
 Knowledge check

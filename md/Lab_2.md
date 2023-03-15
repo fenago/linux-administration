@@ -1,7 +1,7 @@
 
 Climbing the Tree
 
-In this chapter, you will climb a very special tree, which is the Linux
+In this lab, you will climb a very special tree, which is the Linux
 filesystem. During this climbing journey, you will learn:
 
 -   The Linux filesystem hierarchy.
@@ -54,23 +54,33 @@ To have a better view of the contents, you can use the long listing
 
 ``` 
 elliot@ubuntu-linux:/$ ls -l
-drwxr-xr-x   2 root root           4096 Dec 28 15:36 bin
-drwxr-xr-x 125 root root          12288 Jan  1 11:01 etc
-drwxr-xr-x  21 root root           4096 Dec 26 23:52 lib
-dr-xr-xr-x 227 root root              0 Jan  3 02:33 proc
-drwxrwxrwt  15 root root           4096 Jan  3 02:35 tmp
-drwxr-xr-x  14 root root           4096 Jul 24 21:14 var
-drwxr-xr-x   3 root root           4096 Dec 29 07:17 boot
-drwxr-xr-x  18 root root           4000 Jan  3 02:33 dev
-drwxr-xr-x   3 root root           4096 Dec 26 23:47 home
-drwxr-xr-x   3 root root           4096 Dec 27 15:07 opt
-drwx------   4 root root           4096 Dec 29 09:39 root
-drwxr-xr-x   2 root root          12288 Dec 28 15:36 sbin
-drwxr-xr-x  10 root root           4096 Jul 24 21:03 usr
+
+lrwxrwxrwx   1 root root    7 Jul  3  2020 bin -> usr/bin
+drwxr-xr-x   2 root root 4096 Apr 15  2020 boot
+drwxr-xr-x  12 root root 3620 Mar 15 06:14 dev
+drwxr-xr-x   1 root root 4096 Mar 15 06:14 etc
+drwxr-xr-x   1 root root 4096 Mar 12 23:10 home
+lrwxrwxrwx   1 root root    7 Jul  3  2020 lib -> usr/lib
+lrwxrwxrwx   1 root root    9 Jul  3  2020 lib32 -> usr/lib32
+lrwxrwxrwx   1 root root    9 Jul  3  2020 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root   10 Jul  3  2020 libx32 -> usr/libx32
+drwxr-xr-x   2 root root 4096 Jul  3  2020 media
+drwxr-xr-x   2 root root 4096 Jul  3  2020 mnt
+drwxrwxrwx   1 root root 4096 Jan 21  2021 opt
+dr-xr-xr-x 214 root root    0 Mar 15 06:14 proc
+drwxr-xr-x   1 root root 4096 Apr 10  2021 root
+drwxr-xr-x   1 root root 4096 Mar 15 06:14 run
+lrwxrwxrwx   1 root root    8 Jul  3  2020 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4096 Jul  3  2020 srv
+-rwxr-xr-x   1 root root 4046 Apr 16  2021 startup.sh
+dr-xr-xr-x  13 root root    0 Mar 15 06:14 sys
+drwxrwxrwt   1 root root 4096 Mar 15 06:14 tmp
+drwxr-xr-x   1 root root 4096 Jul 22  2020 usr
+drwxr-xr-x   1 root root 4096 Jul 22  2020 var
 ```
 
 This output gives you a lot of valuable information that we will discuss
-in detail in the upcoming chapters. But for now, we focus on the first
+in detail in the upcoming labs. But for now, we focus on the first
 letter in the first column of the output. Take a look at the first
 column of the output:
 
@@ -133,9 +143,7 @@ angela elliot
 ```
 
 These are the two users on my system (besides the root user). The
-[/root] is the home directory for the root user. You probably have
-only one user in [/home]; you will learn later in the book how to
-add other users to your system.
+[/root] is the home directory for the root user.
 
 
 **WHO IS ROOT?**
@@ -202,16 +210,10 @@ elliot@ubuntu-linux:/etc$ pwd
 
 
 
-
-
-
-
 ![](./images/14d4b27d-37b5-4691-9394-8c7079aa3817.png)
 
 
-
-
-*Figures 4* and *5* help you visualize it. You are at [/etc] and
+Above images help you visualize it. You are at [/etc] and
 you want to go to [/home/elliot]. To get to [elliot]\'s home
 directory, we can no longer use a short path (relative path) by running
 the [cd elliot] command:
@@ -235,38 +237,12 @@ In case you haven\'t noticed by now, we have been using the forward
 slash ([/]) as a directory separator.
 
 
-**THE DIRECTORY SEPARATOR**
-
-In Linux, the forward slash ([/]) is the directory separator or
-sometimes referred to as the path separator. In Windows, it\'s the other
-way around because a backward slash ([\\]) is used instead as a
-directory separator. However, be careful since the leading forward slash
-is the root of our filesystem. For example, in
-[/home/elliot/Desktop], only the second and third forward slashes
-are directory separators, but the first forward slash represents the
-root of the filesystem.
-
 
 It\'s crucial to realize the difference between absolute paths and
 relative paths.
 
 
 **ABSOLUTE VERSUS RELATIVE PATHS**
-
-An absolute path of a file is simply the full path of that file and, it
-**ALWAYS** begins with a leading forward slash. For example, [/opt/-
-google/chrome] is an example of an absolute path.
-
-On the other hand, a relative path of a file never starts with the root
-directory and is always relative to the current working directory. For
-example, if you are currently at [/var], then [log/boot.log]
-is a valid relative path.
-
-
-As a rule of thumb, if you want to distinguish between a relative path
-and an absolute path, look and see if the path starts with the root
-directory (forward slash); if it does, then you can conclude the path is
-absolute, otherwise, the path is relative.
 
 The following diagram shows you the relative path
 [Desktop/hello.txt] and will only work if your current working
@@ -276,19 +252,12 @@ directory is [/home/elliot].
 ![](./images/d4ec7c64-3a18-42ac-b027-e96c0fe262be.png)
 
 
-
-
-
-
 The following image shows you the absolute path
 [/home/elliot/Desktop] and will always work regardless of your
 current working directory.
 
 
 ![](./images/6a9e769d-3370-4159-b725-64f668474144.png)
-
-
-
 
 
 
@@ -317,8 +286,8 @@ You can use the [cat] command to view the contents of a text file:
 
 ``` 
 elliot@ubuntu-linux:~/Desktop$ cat hello.txt 
+
 Hello Friend!
-Are you from fsociety?
 ```
 
 If you open the file [hello.txt] on the desktop, you will see the
@@ -326,10 +295,6 @@ same contents, of course, as you can see in the following screenshot.
 
 
 ![](./images/11125c74-31ac-4046-8f87-4e837dbba56c.png)
-
-
-
-
 
 
 
@@ -451,6 +416,8 @@ WOW! Let\'s do it again, but this time, we switch to user
 [angela]. In case you don\'t know, the character is called tilde
 and should be located next to your number *1* key on your keyboard:
 
+**Note** angela user password is : `angela`
+
 ``` 
 elliot@ubuntu-linux:~$ whoami 
 elliot
@@ -507,6 +474,8 @@ Cool! [angela] is back in [/var/log]. So anytime you want to
 go back to your previous working directory, just run the [cd -]
 command.
 
+![](./images/14.png)
+
 
 Hidden Files
 ============
@@ -517,6 +486,7 @@ exist under each directory in the Linux filesystem. But how come we
 can\'t see them when we run the [ls] command?
 
 ``` 
+elliot@ubuntu-linux:~/Desktop$ cd ~/Desktop
 elliot@ubuntu-linux:~/Desktop$ pwd
 /home/elliot/Desktop 
 elliot@ubuntu-linux:~/Desktop$ ls 
@@ -550,25 +520,18 @@ It turns out that any filename that starts with [.] (a dot) is
 hidden.
 
 
-Hidden filenames start with [.]\
-\
+Hidden filenames start with [.]
+
 Any filename that starts with a dot is hidden. That\'s why current and
 parent directories are hidden.
 
 
-To demonstrate further, go to your user home directory and run the
-[ls] command:
-
-``` 
-angela@ubuntu-linux:~$ ls 
-Music
-```
-
 Now run the [ls -a] command:
 
 ``` 
-angela@ubuntu-linux:~$ ls -a
-. .. .bash_logout .bashrc Music .profile
+elliot@ubuntu-linux:~$ cd ~
+elliot@ubuntu-linux:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .local  .profile  Desktop
 ```
 
 You can now see the hidden files in your home directory! Notice all the
@@ -610,31 +573,7 @@ command accepts any file as an argument.
 An argument, also called a command-line argument, is simply any filename
 or data that is provided to a command as an input.
 
-
-
 ![](./images/a1df237d-c2b7-4f48-b917-1dd2bf3d23f8.png)
-
-
-
-
-
-
-You can see in the preceding image the general structure of a Linux
-command.
-
-In Linux terminology, we use the verb **pass** when talking about
-command options and arguments. To use the correct Linux terminology, for
-example, in the preceding image, we say, \"We passed the
-[/home/angela] directory as an argument to the [ls]
-command.\"
-
-You will often find Linux users very keen on using the right
-terminology. Moreover, using the proper terminology can help you pass a
-job interview and land your dream job!
-
-Notice in the preceding figure, we used the plural nouns *options* and
-*arguments*. That\'s because some commands can accept multiple options
-and arguments.
 
 For example, we can do a long listing for all the files in
 [/home/angela] by running the [ls -a -l /home/angela]
@@ -752,15 +691,10 @@ Sun Jan 20 19:42:08 CST 2020
 ```
 
 You will see that the last modification time of the directory
-[/home/elliot/Desktop] has now changed to [Jan 20 19:42],
-which reflects the current time.
+[/home/elliot/Desktop] has now changed to current time.
 
 Of course, you will get a different result on your system because you
 will not be running the command at the same time as me.
-
-Ok, great, so now we understand that the [touch] command can be
-used to update a file\'s modification time. Can it do something else?
-Hmmm, let\'s see.
 
 What if we try to update the modification time of a file that doesn\'t
 exist? What will happen? The only way to know is to try it. Notice that
@@ -788,31 +722,21 @@ drwxr-xr-x 2 elliot elliot 4096 Jan 20 19:42 Desktop
 
 It created an empty file named [blabla].
 
-You can do two things with the [touch] command:
-
-1.  You can update the last modification and access times of existing
-    files.
-2.  You can create new empty files.
-
-The [touch] command can only create regular files; it cannot
-create directories. Also, notice that it updates modification and access
-times, so what is the difference?
-
--   Modification Time \> Last time a file was changed or modified.
--   Access Time \> Last time a file was accessed (read).
-
 By default, the [touch] command changes both the modification and
 access times of a file. I have created three files in [elliot]\'s
 home directory: [file1], [file2], and [file3]:
 
 ``` 
+elliot@ubuntu-linux:~$ rm blabla
+elliot@ubuntu-linux:~$ mkdir dir1
+elliot@ubuntu-linux:~$ touch file1 file2 file3
 elliot@ubuntu-linux:~$ ls -l 
-total 8
-drwxr-xr-x 6 elliot elliot 4096 Jan 25 22:13 Desktop
-drwxr-xr-x 3 elliot elliot 4096 Jan 25 22:18 dir1
--rw-r--r-- 1 elliot elliot    0 Feb 29  2004 file1
--rw-r--r-- 1 elliot elliot    0 Apr 11  2010 file2
--rw-r--r-- 1 elliot elliot    0 Oct  3  1998 file3
+
+drwxrwxr-x 1 elliot elliot 4096 Mar 15 06:50 Desktop
+drwxrwxr-x 2 elliot elliot 4096 Mar 15 07:02 dir1
+-rw-rw-r-- 1 elliot elliot    0 Mar 15 07:03 file1
+-rw-rw-r-- 1 elliot elliot    0 Mar 15 07:03 file2
+-rw-rw-r-- 1 elliot elliot    0 Mar 15 07:03 file3
 ```
 
 Now to change only the modification time of [file1]. We pass the
@@ -821,13 +745,6 @@ Now to change only the modification time of [file1]. We pass the
 ``` 
 elliot@ubuntu-linux:~$ touch -m file1 
 elliot@ubuntu-linux:~$ ls -l
-total 8
-drwxr-xr-x 6 elliot elliot 4096 Jan 25 22:13 Desktop
-drwxr-xr-x 3 elliot elliot 4096 Jan 25 22:18 dir1
--rw-r--r-- 1 elliot elliot    0 Jan 25 23:08 file1
--rw-r--r-- 1 elliot elliot    0 Apr 11  2010 file2
--rw-r--r-- 1 elliot elliot    0 Oct  3  1998 file3 
-elliot@ubuntu-linux:~$
 ```
 
 As you can see, the modification time of [file1] has now changed.
@@ -838,44 +755,20 @@ modification times:
 
 ``` 
 elliot@ubuntu-linux:~$ ls -l 
-total 8
-drwxr-xr-x 6 elliot elliot 4096 Jan 25 22:13 Desktop
-drwxr-xr-x 3 elliot elliot 4096 Jan 25 22:18 dir1
--rw-r--r-- 1 elliot elliot 0    Jan 25 23:08 file1
--rw-r--r-- 1 elliot elliot 0    Apr 11  2010 file2
--rw-r--r-- 1 elliot elliot 0    Oct 3   1998 file3
+
 elliot@ubuntu-linux:~$ ls -l -u 
-total 8 
-drwxr-xr-x 6 elliot elliot 4096 Jan 25 22:13 Desktop
-drwxr-xr-x 3 elliot elliot 4096 Jan 25 22:18 dir1
--rw-r--r-- 1 elliot elliot 0    Feb 29 2004  file1
--rw-r--r-- 1 elliot elliot 0    Apr 11 2010  file2
--rw-r--r-- 1 elliot elliot 0    Oct 3  1998  file3
 ```
 
-As you can see, the last modification time of [file1] is changed
-to [Jan 25 23:08], but the access time is left unchanged: [Feb 29
-2004]. Now this time around, let\'s only change the access time of
+As you can see, the last modification time of [file1] is changed, but the access time is left unchanged. Now this time around, let\'s only change the access time of
 [file2]. To do this, we pass the [-a] option to the
 [touch] command:
 
 ``` 
 elliot@ubuntu-linux:~$ touch -a file2 
+
 elliot@ubuntu-linux:~$ ls -l
-total 8
-drwxr-xr-x 6 elliot elliot 4096 Jan 25 22:13 Desktop
-drwxr-xr-x 3 elliot elliot 4096 Jan 25 22:18 dir1
--rw-r--r-- 1 elliot elliot    0 Jan 25 23:08 file1
--rw-r--r-- 1 elliot elliot    0 Apr 11  2010 file2
--rw-r--r-- 1 elliot elliot    0 Oct  3  1998 file3 
+
 elliot@ubuntu-linux:~$ ls -l -u
-total 8
-drwxr-xr-x 6 elliot elliot 4096 Jan 25 22:13 Desktop
-drwxr-xr-x 3 elliot elliot 4096 Jan 25 22:18 dir1
--rw-r--r-- 1 elliot elliot   0  Feb 29  2004 file1
--rw-r--r-- 1 elliot elliot   0  Jan 25 23:20 file2
--rw-r--r-- 1 elliot elliot   0  Oct  3  1998 file3 
-elliot@ubuntu-linux:~$
 ```
 
 As you can see, the modification time of [file2] was left
@@ -885,12 +778,13 @@ run the [touch] command with no options:
 
 ``` 
 elliot@ubuntu-linux:~$ ls -l file3
--rw-r--r-- 1 elliot elliot 0 Oct 3 1998 file3 
+
 elliot@ubuntu-linux:~$ touch file3 
+
 elliot@ubuntu-linux:~$ ls -l file3
--rw-r--r-- 1 elliot elliot 0 Jan 25 23:27 file3 
+
 elliot@ubuntu-linux:~$ ls -l -u file3
--rw-r--r-- 1 elliot elliot 0 Jan 25 23:27 file3
+
 ```
 
 Awesome! You can also pass the [-t] option to the [ls]
@@ -898,36 +792,18 @@ command to list the files sorted by modification times, newest first:
 
 ``` 
 elliot@ubuntu-linux:~$ ls -l -t 
-total 8
--rw-r--r-- 1 elliot elliot    0 Jan 25 23:27 file3
--rw-r--r-- 1 elliot elliot    0 Jan 25 23:08 file1
-drwxr-xr-x 3 elliot elliot 4096 Jan 25 22:18 dir1
-drwxr-xr-x 6 elliot elliot 4096 Jan 25 22:13 Desktop
--rw-r--r-- 1 elliot elliot    0 Apr 11  2010 file2
 ```
 
 You can add the [-u] option to sort by access times instead:
 
 ``` 
 elliot@ubuntu-linux:~$ ls -l -t -u 
-total 8
--rw-r--r-- 1 elliot elliot    0 Jan 25 23:27 file3
--rw-r--r-- 1 elliot elliot    0 Jan 25 23:20 file2
--rw-r--r-- 1 elliot elliot    0 Jan 25 23:20 file1
-drwxr-xr-x 3 elliot elliot 4096 Jan 25 22:18 dir1
-drwxr-xr-x 6 elliot elliot 4096 Jan 25 22:13 Desktop
 ```
 
 You can also pass the [-r] option to reverse the sorting:
 
 ``` 
 elliot@ubuntu-linux:~$ ls -l -t -r 
-total 8
--rw-r--r-- 1 elliot elliot    0 Apr 11  2010 file2
-drwxr-xr-x 6 elliot elliot 4096 Jan 25 22:13 Desktop
-drwxr-xr-x 3 elliot elliot 4096 Jan 25 22:18 dir1
--rw-r--r-- 1 elliot elliot    0 Jan 25 23:08 file1
--rw-r--r-- 1 elliot elliot    0 Jan 25 23:27 file3
 ```
 
 
@@ -942,6 +818,7 @@ In [elliot]\'s desktop, let\'s create a directory named
 [games] by running the [mkdir games] command:
 
 ``` 
+elliot@ubuntu-linux:~/Desktop$ cd ~/Desktop
 elliot@ubuntu-linux:~/Desktop$ mkdir games 
 elliot@ubuntu-linux:~/Desktop$ ls -l 
 total 8
@@ -951,7 +828,7 @@ elliot@ubuntu-linux:~/Desktop$
 ```
 
 Notice that my current working directory is
-[/home/elliot/Destkop]; that\'s why I was able to use a relative
+[/home/elliot/Desktop]; that\'s why I was able to use a relative
 path.
 
 
@@ -1107,7 +984,7 @@ drwxr-xr-x  3 elliot elliot 4096 Jan 25 23:52 dir1
 drwxr-xr-x 17 elliot elliot 4096 Jan 30 23:32 .
 ```
 
-Before this chapter comes to an end, I want to show you a pretty cool
+Before this lab comes to an end, I want to show you a pretty cool
 tip. First, let\'s create a directory named
 [averylongdirectoryname]:
 
@@ -1133,7 +1010,7 @@ automatically complete the directory name for you:
 elliot@ubuntu-linux:~$ cd averylongdirectoryname/
 ```
 
-Pretty cool! Alright, this takes us to the end of this chapter, and
+Pretty cool! Alright, this takes us to the end of this lab, and
 it\'s time for you to do the lovely knowledge check.
 
 

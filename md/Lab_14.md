@@ -1,7 +1,7 @@
 
 The Power of Sudo
 
-In this chapter, you will learn how to give permissions to non-root
+In this lab, you will learn how to give permissions to non-root
 users on the system so they can run privileged commands. In real life,
 the system administrator should not give the root password to any user
 on the system. However, some users on the system may need to run

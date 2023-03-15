@@ -110,10 +110,6 @@ Knowledge check 6
 5.  [touch coins/silver coins/gold]
 6.  [touch currency/bronze]
 7.  [ls coins currency]
-
-```{=html}
-<!-- -->
-```
 8.  [ln beverages drinks]
 9.  [rm beverages]
 10. [cat drinks]
@@ -250,21 +246,12 @@ Knowledge check 16
     #!/bin/bash
      cal
     ```
-    
 
-```{=html}
-<!-- -->
-```
 2.  
     ```
     #!/bin/bash
      cal $1
     ```
-    
-
-```{=html}
-<!-- -->
-```
 3.  
     ```
     #!/bin/bash
@@ -307,16 +294,3 @@ Knowledge check 19
 
     to the end of the [.bashrc] file.
 
-
-Knowledge check 20
-==================
-
-
-1.  Go to the [Virtual Machine Settings] \>
-    [Storage] \> [Create a new Disk].
-2.  [fdisk /dev/sdc]
-3.  [pvcreate /dev/sdc1 /dev/sdc2 /dev/sdc3]
-4.  [vgcreate bigvg /dev/sdc1 /dev/sdc2 /dev/sdc3]
-5.  [lvcreate -n **biglv** -L 500M **bigvg**]
-6.  [mkfs -t **ext4** /dev/mapper/bigvg-biglv]
-7.  [mount **/dev/mapper/bigvg-biglv** /mnt/wikileaks]

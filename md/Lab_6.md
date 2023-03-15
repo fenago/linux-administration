@@ -1,7 +1,7 @@
 Lab: Hard versus Soft Links
 ===========================
 
-In this chapter, we further our knowledge on Linux files, and we discuss
+In this lab, we further our knowledge on Linux files, and we discuss
 the differences between hard and soft links. If you have ever created a
 shortcut in Windows (or macOS) before, you will quickly grasp the
 concept of a soft link. But before we discuss hard and soft links, you
@@ -324,31 +324,10 @@ The story is a little bit different when it comes to hard links. That\'s
 because a hard link is a replica of the original file. And here is a
 definition of a hard link:
 
-
-**WHAT IS A HARD LINK?**
-
-A hard link is simply an additional name for an existing file. It has
-the same inode of the original file, and hence, it\'s indistinguishable
-from the original file.
-
-
-You can think of it as a nickname. When somebody calls you by your
-nickname, they are still referring to you.
-
-A hard link has the following properties:
-
--   A hard link has (shares) the same inode of the original file.
--   A hard link remains intact if the original file gets deleted.
--   Any change in the hard link is reflected in the original file.
--   You can\'t create hard links to directories.
-
 The following diagram helps you visualize hard links:
 
 
 ![](./images/c7168626-7b5d-43b8-aa91-6cf509081302.png)
-
-
-
 
 
 We use the same [ln] command to create hard links, but this time
@@ -363,6 +342,7 @@ So to create a hard link named [hard.txt] to the file
 hard.txt]:
 
 ``` 
+elliot@ubuntu-linux:~$ cd ~
 elliot@ubuntu-linux:~$ ln facts.txt hard.txt
 ```
 

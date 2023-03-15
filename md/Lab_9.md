@@ -3,7 +3,7 @@ Piping and I/O Redirection
 
 One of the main principles in Linux is that *Each program does one thing
 well* and thus, every Linux command is designed to accomplish a single
-task efficiently. In this chapter, you will learn how to use Linux pipes
+task efficiently. In this lab, you will learn how to use Linux pipes
 to unleash the real power of Linux commands by combining their
 functionality to carry out more complex tasks. You will also learn about
 I/O (input/output) redirection, which will enable you to read user input
@@ -20,12 +20,6 @@ input (argument) of another command:
 
 ![](./images/51ed85f7-0bf5-4bc6-9d5e-35f9d0eb0785.png)
 
-
-
-A pipe is represented by the vertical bar character on your keyboard.
-Linux pipes are very useful as they allow you to accomplish a relatively
-complex task in an easy way, and throughout the book, you will see that
-they come in handy very often.
 
 Before we do an example, let\'s first rename the [hard.txt] file
 to [facts.txt], as we removed the [facts.txt] file back in `Lab 6`,
@@ -87,27 +81,29 @@ output shows how many CPUs your machine has. You can display the fourth
 line of the [lscpu] command by using two pipes:
 
 ``` 
-elliot@ubuntu-linux:~$ lscpu | head -n 4 | tail -n 1 
-CPU(s):       1
+elliot@ubuntu-linux:~$ lscpu | head -n 5 | tail -n 1 
+CPU(s):       4
 ```
 
 So let\'s break down what happened here. The first pipe we used was to
 show the first four lines of the [lscpu] command:
 
 ``` 
-elliot@ubuntu-linux:~$ lscpu | head -n 4 
-Architecture:    x86_64
-CPU op-mode(s):  32-bit, 64-bit 
-Byte Order:      Little Endian
-CPU(s):          1
+elliot@ubuntu-linux:~$ lscpu | head -n 5 
+
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   40 bits physical, 48 bits virtual
+CPU(s):                          4
 ```
 
 We then used the second pipe to [tail] the last line, which gets
 us the fourth line in this case:
 
 ``` 
-elliot@ubuntu-linux:~$ lscpu | head -n 4 | tail -n 1 
-CPU(s):        1
+elliot@ubuntu-linux:~$ lscpu | head -n 5 | tail -n 1 
+CPU(s):        4
 ```
 
 You can similarly display the second line of [lscpu], which shows
@@ -127,15 +123,6 @@ work with three different streams of data:
 -   Standard output (also referred to as [stdout])
 -   Standard error (also referred to as [stderr])
 
-Most of the commands we have discussed so far produce some output. This
-output is sent to a special file called standard output (also referred
-to as [stdout]). By default, the standard output file is linked to
-the terminal, and that\'s why every time you run a command, you see the
-output on your terminal. Also, sometimes commands will produce error
-messages. These error messages are sent to another special file called
-standard error (also referred to as [stderr]), and it\'s also
-linked to the terminal by default.
-
 
 Redirecting standard output
 ===========================
@@ -146,7 +133,7 @@ date on your terminal:
 
 ``` 
 elliot@ubuntu-linux:~$ date 
-Sat May 11 06:02:44 CST 2019
+Wed Mar 15 11:50:13 UTC 2023
 ```
 
 Now by using the greater than sign [\>], you can redirect the
@@ -428,7 +415,7 @@ in the [message] variable:
 
 ``` 
 elliot@ubuntu-linux:~$ echo $message 
-Sat May 11 06:34:52 CST 2019
+Wed Mar 15 11:51:49 UTC 2023
 ```
 
 As you can see, the variable [message] now has the same contents

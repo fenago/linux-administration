@@ -3,7 +3,7 @@ Create Your Own Commands
 
 Sometimes, you may be having a hard time remembering one command. Other
 times, you will find yourself running a very long command over and over
-again, and that drives you insane. In this chapter, you will learn how
+again, and that drives you insane. In this lab, you will learn how
 you can make your *own* commands, because you are the real boss.
 
 
@@ -43,14 +43,8 @@ Mem:       3.9G     936M     2.2G       6.6M           756M         2.7G
 Swap:      947M       0B     947M
 ```
 
-Wow! So now you have achieved your dream! You can create an alias for
-any Linux command that you are having trouble remembering. Notice that
-the general format of the [alias] command is as follows:
-
-``` 
-alias alias_name="command(s)_to_run"
-```
-
+You can create an alias for
+any Linux command that you are having trouble remembering.
 
 One alias for multiple commands
 ===============================
@@ -178,7 +172,7 @@ alias ls='ls --color=auto'
 To create a permanent alias for a user, you need to include it in the
 hidden [.bashrc] file in the user\'s home directory. So to
 permanently add our two aliases back, you have to add the following two
-lines at the very end of the [/home/el- liot/.bashrc] file:
+lines at the very end of the [/home/elliot/.bashrc] file:
 
 ``` 
 alias memory = "free -h" 
@@ -388,39 +382,6 @@ Now you will be asked to confirm each time you attempt to remove a file:
 elliot@ubuntu-linux:~$ rm *
 rm: remove regular file '3x10.sh'?
 ```
-
-
-Go crazy with aliases
-=====================
-
-
-You can also have some fun with aliases and make users go crazy; take a
-look at this alias:
-
-``` 
-elliot@ubuntu-linux:~$ alias nano="vi"
-```
-
-Now when user [elliot] tries to open the [nano] editor, the
-[vi] editor will open instead! User [elliot] can overcome
-this dilemma by typing in the full path of the [nano] editor. Here
-is another funny alias:
-
-``` 
-elliot@ubuntu-linux:~$ alias exit="echo No I am not exiting ..."
-```
-
-Now look what will happen when user [elliot] tries to exit the
-Terminal:
-
-``` 
-elliot@ubuntu-linux:~$ exit 
-No I am not exiting ... 
-elliot@ubuntu-linux:~$ exit 
-No I am not exiting ...
-```
-
-I will let you deal with this by yourself; I am evil like that! Haha.
 
 
 Knowledge check

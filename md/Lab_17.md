@@ -1,7 +1,7 @@
 
 You Need a Cron Job
 
-In this chapter, you will learn how to automate boring tasks in Linux by
+In this lab, you will learn how to automate boring tasks in Linux by
 using cron jobs, which is one of the most useful and powerful utilities
 in Linux. Thanks to cron jobs, Linux system administrators can rest on
 the weekend and enjoy their vacation with their beloved ones. Cron jobs
@@ -9,16 +9,24 @@ allow you to schedule tasks to run at a specific time. With cron jobs,
 you can schedule to run backups, monitor system resources, and much
 more.
 
+Make sure to start cron service before starting the lab:
+
+```
+service cron start
+
+service cron status
+```
+
+![](./images/16.png)
+
 
 Our first cron job
 ==================
-
 
 The following diagram shows you the typical format for a cron job:
 
 
 ![](./images/8c4892ca-b99d-4714-aa7d-7ef9863d0820.png)
-
 
 
 Cron jobs are user-specific, and so each user has their own list of cron
@@ -65,7 +73,7 @@ elliot@ubuntu-linux:~$ crontab -l
 ```
 
 Now, wait for a few minutes and then check the contents of the file
-[/home/el- liot/minutes.txt]:
+[/home/elliot/minutes.txt]:
 
 ``` 
 elliot@ubuntu-linux:~$ cat /home/elliot/minutes.txt 
@@ -160,13 +168,6 @@ following format:
 
 Notice that [0] is Sunday, [1] is Monday, and so on.
 
-To see more cron examples, you can check the fifth section of the
-[crontab] man page:
-
-``` 
-elliot@ubuntu-linux:~$ man 5 crontab
-```
-
 
 Automating system patching
 ==========================
@@ -188,7 +189,6 @@ root@ubuntu-linux:~# cat auto_patch.sh
 #!/bin/bash
 apt-get -y update 
 apt-get -y upgrade 
-shutdown -r now
 ```
 
 Notice that the script [auto\_patch.sh] is tiny; only three lines.
@@ -234,23 +234,23 @@ We first need to install the [at] package:
 
 ``` 
 root@ubuntu-linux:~# apt-get -y install at
+
+root@ubuntu-linux:~# service atd start
+
+root@ubuntu-linux:~# service atd status
 ```
+
+![](./images/17.png)
 
 Now you can schedule to run the [auto\_patch.sh] script this
 coming Saturday at [01:00] AM with the following command:
 
 ``` 
-root@ubuntu-linux:~# at 01:00 AM Sat -f /root/patch.sh
+root@ubuntu-linux:~# at 01:00 AM Sat -f /root/auto_patch.sh
 ```
 
 Remember, [at] jobs only run once, so after Saturday, the
 [auto\_patch.sh] script will not run again.
-
-You can learn more about [at] by reading its man page:
-
-``` 
-root@ubuntu-linux:~# man at
-```
 
 
 Knowledge check

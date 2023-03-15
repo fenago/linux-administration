@@ -3,7 +3,7 @@ Bash Scripting Is Fun
 
 To complete a specific task in Linux, you will often find yourself
 running the same set of commands over and over again. This process can
-waste a lot of your precious time. In this chapter, you will learn how
+waste a lot of your precious time. In this lab, you will learn how
 to create bash scripts so that you can be much more efficient in Linux.
 
 
@@ -314,19 +314,7 @@ Using the if condition
 ======================
 
 
-You can add intelligence to your bash script by making it behave
-differently in different scenarios. To do that, we use the conditional
-[if] statement.
-
-In general, the syntax of the [if condition] is as follows:
-
-``` 
-if [ condition is true ]; then 
-    do this ...
-fi
-```
-
-For example, let\'s create a script [empty.sh] that will examine
+Let\'s create a script [empty.sh] that will examine
 whether a file is empty or not:
 
 ``` 
@@ -467,14 +455,6 @@ tempfiles is a soft link
 
 It correctly detects that [tempfiles] is a soft link.
 
-The following [man] page contains all the test conditions:
-
-``` 
-elliot@ubuntu-linux:~$ man test
-```
-
-So NEVER memorize! Utilize and make use of the man pages.
-
 
 Looping in bash scripts
 =======================
@@ -489,17 +469,7 @@ solution.
 Using the for loop
 ------------------
 
-The [for] loop has a few different syntaxes. If you are familiar
-with C++ or C programming, then you will recognize the following
-[for] loop syntax:
-
-``` 
-for ((initialize ; condition ; increment)); do
-// do something 
-done
-```
-
-Using the aforementioned C-style syntax; the following [for] loop
+The following [for] loop
 will print out \"Hello World\" twenty times:
 
 ``` 
@@ -512,7 +482,8 @@ The loop initializes the integer variable [i] to [0], then
 it tests the condition ([i \< 20]); if true, it then executes the
 line echo \"Hello World\" and increments the variable [i] by one,
 and then the loop runs again and again until [i] is no longer less
-than [20].\
+than [20].
+
 Now let\'s create a script [hello20.sh] that has the [for]
 loop we just discussed:
 
@@ -984,7 +955,7 @@ No browsing for you
 ===================
 
 
-We will conclude this chapter with a pretty cool bash script
+We will conclude this lab with a pretty cool bash script
 [noweb.sh] that makes sure no user is having fun browsing the web
 on the Firefox browser:
 

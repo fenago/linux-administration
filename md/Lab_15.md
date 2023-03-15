@@ -1,9 +1,8 @@
 
-What\'s Wrong with the Network?
+Lab: What\'s Wrong with the Network?
+====================================
 
-We all get furious when there is something wrong with the network. There
-is no fun in this world without being connected to the internet. In this
-chapter, you will learn the basics of Linux networking. You will also
+In this lab, you will learn the basics of Linux networking. You will also
 learn how to check network connectivity between two hosts, and gain a
 practical understanding of how DNS works and much more!
 
@@ -14,15 +13,9 @@ Testing network connectivity
 
 An easy way to check whether you have internet access on your Linux
 machine is by trying to reach any remote host (server) on the internet.
-This can be done by using the [ping] command. In general, the
-syntax of the [ping] command is as follows:
+This can be done by using the [ping] command. 
 
-``` 
-ping [options] host
-```
-
-For example, to test whether you can reach [google.com], you can
-run the following command:
+To test whether you can reach [google.com], you can run the following command:
 
 ``` 
 root@ubuntu-linux:~# ping google.com
@@ -40,14 +33,6 @@ PING google.com (172.217.1.14) 56(84) bytes of data.
 8 packets transmitted, 8 received, 0% packet loss, time 66ms 
 rtt min/avg/max/mdev = 36.555/38.724/40.821/1.344 ms
 ```
-
-The [ping] command sends a packet (unit of data) called an **ICMP
-echo request** to the specified host and waits for the host to send back
-a packet called an **ICMP echo reply** to confirm that it did receive
-the initial packet. If the host replies as we see in our example, then
-it proves that we were able to reach the host. This is like you sending
-a package to your friend\'s house and waiting for your friend to send
-you a text to confirm that they received it.
 
 Notice that without any options, the [ping] command keeps sending
 packets continuously, and it won\'t stop until you hit *Ctrl* + *C*.
@@ -68,14 +53,6 @@ PING google.com (172.217.1.14) 56(84) bytes of data.
 3 packets transmitted, 3 received, 0% packet loss, time 59ms rtt min/avg/max/mdev = 39.323/43.267/49.708/4.595 ms
 ```
 
-If you are not connected to the internet, you will get the following
-output from the [ping] command:
-
-``` 
-root@ubuntu-linux:~# ping google.com
-ping: google.com: Name or service not known
-```
-
 
 Listing your network interfaces
 ===============================
@@ -86,16 +63,15 @@ the contents of the [/sys/class/net] directory:
 
 ``` 
 root@ubuntu-linux:~# ls /sys/class/net 
-eth0 lo wlan0
+
+eth0 lo 
 ```
 
-I have three network interfaces on my system:
+We have two network interfaces on my system:
 
 1.  [eth0]: The Ethernet interface
-
 2.  [lo]: The loopback interface
 
-3.  [wlan0]: The Wi-Fi interface
 
 Notice that, depending on your computer\'s hardware, you may get
 different names for your network interfaces.
@@ -116,24 +92,6 @@ root@ubuntu-linux:~# ip link show
     link/ether 10:0b:a9:6c:89:a0 brd ff:ff:ff:ff:ff:ff
 ```
 
-The nmcli command
------------------
-
-Another method that I prefer is using the [nmcli] device status
-command:
-
-``` 
-root@ubuntu-linux:~# nmcli device status 
-DEVICE TYPE STATE CONNECTION
-wlan0 wifi      connected   SASKTEL0206-5G 
-eth0  ethernet  unavailable --
-lo    loopback  unmanaged   --
-```
-
-You can see the connection status of each network interface in the
-output. I am currently connected to the internet through my Wi-Fi
-interface.
-
 
 Checking your IP address
 ========================
@@ -147,15 +105,15 @@ command followed by the name of your network interface that is connected
 to the internet:
 
 ``` 
-root@ubuntu-linux:~# ifconfig wlan0
-wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500
-       inet 172.16.1.73 netmask 255.255.255.0 broadcast 172.16.1.255 
-       inet6 fe80::3101:321b:5ec3:cf9 prefixlen 64 scopeid 0x20<link> 
-       ether 10:0b:a9:6c:89:a0 txqueuelen 1000 (Ethernet)
-       RX packets 265 bytes 27284 (26.6 KiB)
-       RX errors 0 dropped 0 overruns 0 frame 0
-       TX packets 165 bytes 28916 (28.2 KiB)
-       TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0
+root@ubuntu-linux:~# ifconfig eth0
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.2  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:02  txqueuelen 0  (Ethernet)
+        RX packets 94183  bytes 100304746 (100.3 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 146553  bytes 117106569 (117.1 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
 You can also use the [-a] option to list all network interfaces:
@@ -192,15 +150,6 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500
 You can see from the output that I am only connected to the internet
 through my Wi-Fi interface ([wlan0]), and my IP address is
 [172.16.1.73].
-
-
-**WHAT IS LOOPBACK?**[\
-]Loopback (or [lo]) is a virtual interface that
-your computer uses to communicate with itself; it is mainly used for
-troubleshooting purposes. The IP address of the loopback interface is
-[127.0.0.1], and if you want to ping yourself! Go ahead and ping
-[127.0.0.1].[\
-]
 
 
 You can also use the newer [ip] command to check your machine\'s
@@ -245,7 +194,10 @@ the following commands:
 Let\'s start with the first command, [route -n]:
 
 ``` 
-root@ubuntu-linux:~# route -n Kernel IP routing table
+root@ubuntu-linux:~# route -n 
+
+
+Kernel IP routing table
 Destination Gateway       Genmask       Flags  Metric Ref Use Iface
 0.0.0.0     172.16.1.254  0.0.0.0       UG     600     0   0 wlan0
 172.16.1.0  0.0.0.0       255.255.255.0 U      600     0   0 wlan0
@@ -257,10 +209,11 @@ You can see from the output that my default gateway IP address is
 
 ``` 
 root@ubuntu-linux:~# netstat -rn 
+
 Kernel IP routing table
-Destination   Gateway      Genmask       Flags  MSS Window irtt Iface
-0.0.0.0       172.16.1.254 0.0.0.0       UG     0   0      0    wlan0
-172.16.1.0    0.0.0.0      255.255.255.0 U      0   0      0    wlan0
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         172.17.0.1      0.0.0.0         UG        0 0          0 eth0
+172.17.0.0      0.0.0.0         255.255.0.0     U         0 0          0 eth0
 ```
 
 The output almost looks identical. Now the output differs a little bit
@@ -268,6 +221,7 @@ with the third command, [ip route]:
 
 ``` 
 root@ubuntu-linux:~# ip route
+
 default via 172.16.1.254 dev wlan0 proto dhcp metric 600
 172.16.1.0/24 dev wlan0 proto kernel scope link src 172.16.1.73 metric 600
 ```
@@ -277,7 +231,8 @@ via [172.16.1.254]. You should also be able to ping your default
 gateway:
 
 ``` 
-root@ubuntu-linux:~# ping -c 2 172.16.1.254
+root@ubuntu-linux:~# ping -c 2 ADD_YOUR_GATEWAY_ID_HERE
+
 PING 172.16.1.254 (172.16.1.254) 56(84) bytes of data.
 64 bytes from 172.16.1.254: icmp_seq=1 ttl=64 time=1.38 ms
 64 bytes from 172.16.1.254: icmp_seq=2 ttl=64 time=1.62 ms
@@ -289,13 +244,6 @@ PING 172.16.1.254 (172.16.1.254) 56(84) bytes of data.
 
 Flying with traceroute
 ======================
-
-
-You are now ready to leave your house to go to work. You must go through
-different streets that eventually lead to your destination, right? Well,
-this is very similar to when you try to reach a host (website) on the
-internet; there is a route that you take that starts with your default
-gateway and ends with your destination.
 
 You can use the [traceroute] command to trace the route to any
 destination. The general syntax of the [traceroute] command is as
@@ -334,23 +282,13 @@ to your destination.
 Breaking your DNS
 =================
 
-
-Every website (destination) on the internet must have an IP address.
-However, we humans are not very good with numbers so we have invented
-the **Domain Name System** (**DNS**). The primary function of the DNS is
-that it associates a name (domain name) with an IP address; this way, we
-don\'t need to memorize IP addresses while browsing the internet \...
-thank God for the DNS!
-
 Every time you enter a domain name on your browser, the DNS translates
 (resolves) the domain name to its corresponding IP address. The IP
 address of your DNS server is stored in the file
 [/etc/resolv.conf]:
 
 ``` 
-root@ubuntu-linux:~# cat /etc/resolv.conf 
-# Generated by NetworkManager
-nameserver 142.165.200.5
+root@ubuntu-linux:~# cat /etc/resolv.conf
 ```
 
 I am using the DNS server [142.165.200.5], which is provided by my
@@ -403,6 +341,7 @@ so I can understand how they work. Let\'s see what life is without DNS
 by emptying the file [/etc/resolv.conf]:
 
 ``` 
+root@ubuntu-linux:~# cp /etc/resolv.conf /etc/resolv.conf_backup
 root@ubuntu-linux:~# echo > /etc/resolv.conf 
 root@ubuntu-linux:~# cat /etc/resolv.conf
 
@@ -420,6 +359,7 @@ anymore. Now let\'s try to ping [facebook.com]:
 
 ``` 
 root@ubuntu-linux:~# ping facebook.com
+
 ping: facebook.com: Temporary failure in name resolution
 ```
 
@@ -450,7 +390,9 @@ nameserver 8.8.8.8
 Now let\'s do an [nslookup] on [facebook.com] again:
 
 ``` 
-root@ubuntu-linux:~# nslookup facebook.com Server: 8.8.8.8
+root@ubuntu-linux:~# nslookup facebook.com
+ 
+Server: 8.8.8.8
 Address: 8.8.8.8#53
 
 Non-authoritative answer:
@@ -466,7 +408,7 @@ Facebook is running on many different servers located in various regions
 of the world.
 
 
-Changing your hostname
+Your hostname
 ======================
 
 
@@ -481,128 +423,9 @@ root@ubuntu-linux:~# cat /etc/hostname
 ubuntu-linux
 ```
 
-You can use hostnames to reach other computers in the same network
-(subnet). For example, I have another computer with the hostname
-[backdoor] that is currently running, and I can ping it:
-
-``` 
-root@ubuntu-linux:~# ping backdoor
-PING backdoor (172.16.1.67) 56(84) bytes of data.
-64 bytes from 172.16.1.67 (172.16.1.67): icmp_seq=1 ttl=64 time=3.27 ms
-64 bytes from 172.16.1.67 (172.16.1.67): icmp_seq=2 ttl=64 time=29.3 ms
-64 bytes from 172.16.1.67 (172.16.1.67): icmp_seq=3 ttl=64 time=51.4 ms
-^C
---- backdoor ping statistics ---
-3 packets transmitted, 3 received, 0% packet loss, time 20ms 
-rtt min/avg/max/mdev = 3.272/27.992/51.378/19.662 ms
-```
-
-Notice that [backdoor] is on the same network (subnet) and has an
-IP address of [172.16.1.67]. I can also ping myself:
-
-``` 
-root@ubuntu-linux:~# ping ubuntu-linux
-PING ubuntu-linux (172.16.1.73) 56(84) bytes of data.
-64 bytes from 172.16.1.73 (172.16.1.73): icmp_seq=1 ttl=64 time=0.025 ms
-64 bytes from 172.16.1.73 (172.16.1.73): icmp_seq=2 ttl=64 time=0.063 ms
-^C
---- ubuntu-linux ping statistics ---
-2 packets transmitted, 2 received, 0% packet loss, time 14ms 
-rtt min/avg/max/mdev = 0.025/0.044/0.063/0.019 ms
-```
-
-That\'s a smart way of displaying your computer\'s IP address -- simply
-ping yourself!
-
-You can use the [hostnamectl] command to view and set your
-computer\'s hostname:
-
-``` 
-root@ubuntu-linux:~# hostnamectl 
-    Static hostname: ubuntu-linux
-          Icon name: computer-vm 
-            Chassis: vm
-         Machine ID: 106fd80252e541faafa4e54a250d1216 
-            Boot ID: c5508514af114b4b80c55d4267c25dd4
-     Virtualization: oracle
-   Operating System: Ubuntu 18.04.3 LTS 
-             Kernel: Linux 4.15.0-66-generic
-       Architecture: x86-64
-```
-
-To change your computer\'s hostname, you can use the [hostnamectl
-set-hostname] command followed by the new hostname:
-
-``` 
-hostnamectl set-hostname new_hostname
-```
-
-For example, you can change the hostname of your computer to
-[myserver] by running the following command:
-
-``` 
-root@ubuntu-linux:~# hostnamectl set-hostname myserver 
-root@ubuntu-linux:~# su -
-root@myserver:~#
-```
-
-Keep in mind that you need to open a new shell session so that your
-shell prompt displays the new hostname. You can also see that the file
-[/etc/hostname] is updated as it contains the new hostname:
-
-``` 
-root@ubuntu-linux:~# cat /etc/hostname 
-myserver
-```
-
-
-Restarting your network interface
-=================================
-
-
-It\'s probably an abused method, but sometimes doing a restart is the
-quickest fix to many computer-related troubles! I myself am guilty of
-overusing the restart solution for most of my computer problems.
-
-You can use the [ifconfig] command to bring down (disable) a
-network interface; you have to follow the network interface name with
-the [down] flag as follows:
-
-``` 
-ifconfig interface_name down
-```
-
-For example, I can bring down my Wi-Fi interface, [wlan0], by
-running the following command:
-
-``` 
-root@myserver:~# ifconfig wlan0 down
-```
-
-You can use the [up] flag to bring up (enable) a network
-interface:
-
-``` 
-ifconfig interface_name up
-```
-
-For example, I can bring back up my Wi-Fi interface by running the
-following command:
-
-``` 
-root@myserver:~# ifconfig wlan0 up
-```
-
-You may also want to restart all your network interfaces at the same
-time. This can be done by restarting the [NetworkManager] service
-as follows:
-
-``` 
-root@myserver:~# systemctl restart NetworkManager
-```
 
 Now it\'s time to test your understanding of Linux networking with a
-lovely knowledge-check exercise.
+knowledge-check exercise.
 
 
 Knowledge check

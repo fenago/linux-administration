@@ -254,6 +254,8 @@ Desktop Documents Downloads Music Pictures Public Videos
 If you want to change your password, you can run the [passwd]
 command:
 
+**Note** Current password: `elliot`
+
 ``` 
 elliot©ubuntu-linux:-$ passwd 
 Changing password for elliot. 
@@ -268,7 +270,8 @@ hostname:
 
 ``` 
 elliot©ubuntu-linux:-$ hostname 
-ubuntu-linux
+
+YOUR_HOSTNAME
 ```
 
 You can use the [free] command to display the amount of free and
@@ -358,8 +361,8 @@ tmpfs            395M       48K       395M       1%  /run/user/1000
 ```
 
 Don\'t worry if you can\'t understand everything you see in the output,
-as I will explain everything in detail in the following chapters. The
-whole idea of this chapter is to get your feet wet; we will dive deep
+as I will explain everything in detail in the following labs. The
+whole idea of this lab is to get your feet wet; we will dive deep
 later with the sharks!
 
 The [echo] command is another very useful command; it allows you
@@ -372,47 +375,17 @@ elliot©ubuntu-linux:-$ echo Cats are better than Dogs!
 Cats are better than Dogs!
 ```
 
-You might be asking yourself, \"How on earth is this useful?\" Well, I
-promise you that by the time you finish reading this book, you would
-have realized the immense benefits of the [echo] command.
-
-You can spend a great amount of time on your Terminal, punching in
-commands. Sometimes, you may want to rerun a command, but you may have
-forgotten the name of the command or the options that you have used, or
-you are simply lazy and don\'t want to type it again. Whatever the case
-may be, the [history] command will not let you down.
-
 Let\'s run the [history] command and see what we get here:
 
 ``` 
 elliot©ubuntu-linux:-$ history
-1 date
-2 blabla
-3 cal
-4 cal 2022
-5 cal feb 1993
-6 clear
-7 lscpu
-8 uptime
-9 uptime
-10 pwd
-11 ls
-12 passwd
-13 hostname
-14 free
-15 free -h
-16 free --human
-17 df
-18 df -h
-19 echo Cats are better than Dogs!
-20 history
 ```
 
 As expected, the [history] command displayed all the commands that
-we ran so far in chronological order. If I want to rerun the command on line 7, all I need to do is run [!7]:
+we ran so far in chronological order. If I want to rerun the command on line 7, all I need to do is run [!15]:
 
 ``` 
-elliot©ubuntu-linux:-$ !7 
+elliot©ubuntu-linux:-$ !15 
 lscpu
 Architecture:         x86_64
 CPU op-mode(s):       32-bit, 64-bit
@@ -465,7 +438,8 @@ information:
 
 ``` 
 elliot©ubuntu-linux:-$ uname -v
-#33-Ubuntu SMP Wed Apr 29 14:32:27 UTC 2023
+
+#36-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb 3 18:36:56 UTC 2023
 ```
 
 You can also use the [-r] option to print the current kernel
@@ -473,7 +447,8 @@ release information:
 
 ``` 
 elliot©ubuntu-linux:-$ uname -r 
-5.4.0-29-generic
+
+5.19.0-35-generic
 ```
 
 You can also use the [-a] option to print all the information of
@@ -481,8 +456,8 @@ your current kernel at once:
 
 ``` 
 elliot©ubuntu-linux:-$ uname -a
-Linux ubuntu-linux 5.4.0-29-generic #33-Ubuntu SMP
-Wed Apr 29 14:32:27 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+Linux 4847fcf04108 5.19.0-35-generic #36-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb 3 18:36:56 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
 You can also run the [lsb\_release -a] command to display the
@@ -497,24 +472,14 @@ Release: 20.04
 Codename: focal
 ```
 
-Finally, the last command you are going to learn in this chapter is the
+Finally, the last command you are going to learn in this lab is the
 [exit] command, which terminates your current Terminal session:
 
 ``` 
 elliot©ubuntu-linux:-$ exit
 ```
 
-
-**A COOL FACT**
-
-You may have already observed by now that Linux command names pretty
-much resemble what they do. For instance, the [pwd] command
-literally stands for **Print Working Directory**, [ls] stands for
-**List**, [lscpu] stands for **List CPU**, etc. This fact makes it
-much easier remembering Linux commands.
-
-
-Congratulations! You made it through the first chapter. Now it\'s time
+Congratulations! You made it through the first lab. Now it\'s time
 for your first knowledge check exercise.
 
 
@@ -552,5 +517,5 @@ load average: 2.12, 3.09, 4.03
     are:
 
 ``` 
-load average: 0.30, 1.09, 2.03Copy
+load average: 0.30, 1.09, 2.03
 ```

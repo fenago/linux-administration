@@ -1,29 +1,14 @@
 
-Kill the Process
+Lab: Kill the Process
+---------------------
+
 
 Any program that is running on your system is a process. In this
-chapter, you will learn all about Linux processes. You will learn how to
+lab, you will learn all about Linux processes. You will learn how to
 view process information. You will also learn how to send different
 signals to a process. Furthermore, you will understand the differences
 between foreground and background processes.
 
-
-What is a process?
-==================
-
-
-A process is simply an instance of a running program. So any program
-running on your system is a process. All of the following are examples
-of processes:
-
--   Firefox or any web browser running on your system is a process.
--   Your Terminal that you are running right now is a process.
--   Any game you may play on your system is a process.
--   Copying files is a process.
-
-And just like the case with files, every process is owned by a specific
-user. The owner of a process is simply the user who started that
-process.
 
 To list all the processes that are owned by a specific user, you can run
 the command [ps -u] followed by the username:
@@ -37,26 +22,18 @@ you can run:
 
 ``` 
 root@ubuntu-linux:~# ps -u elliot
- PID TTY       TIME CMD
-1365 ?     00:00:00 systemd
-1366 ?     00:00:00 (sd-pam)
-1379 ?     00:00:00 gnome-keyring-d
-1383 tty2  00:00:00 gdm-x-session
-1385 tty2  00:00:18 Xorg
-1389 ?     00:00:00 dbus-daemon
-1393 tty2  00:00:00 gnome-session-b
-1725 ?     00:00:00 ssh-agent
-1797 ?     00:00:00 gvfsd
+
+PID TTY          TIME CMD
+645 pts/0    00:00:00 bash
+675 pts/0    00:00:00 bash
+2387 pts/0    00:00:00 bash
+4955 pts/0    00:00:00 bash
 . 
 . 
 . 
 .
 ```
 
-The first column in the output lists the **process identifiers**
-(**PIDs**). The PID is a number that uniquely identifies a process, just
-like with file [inodes]. The last column of the output lists the
-process names.
 
 You can use the [ps -e] command to list all the processes that are
 running on your system:
@@ -145,7 +122,7 @@ information of your bash process by using the [-p] option followed
 by the bash PID:
 
 ``` 
-elliot@ubuntu-linux:~$ ps -fp 10093
+elliot@ubuntu-linux:~$ ps -fp ADD_YOUR_BASH_PROCESS_ID
 UID     PID   PPID  C  STIME  TTY   TIME   CMD
 elliot 10093 10009  0  13:37 pts/1 00:00:00 bash
 ```
@@ -160,25 +137,11 @@ to as the child process of the terminal process:
 
 
 
-
-
 The [top] command is a very useful command that you can use to
-view processes\' information in real time. You can check its [man]
-page to learn how to use it:
-
-``` 
-elliot@ubuntu-linux:~$ man top
-
-```
-
-The output for the preceding command is shown in the following
-screenshot:
+view processes\' information in real time. The output for the preceding command is shown in the following screenshot:
 
 
 ![](./images/4b5b24da-6935-416b-866e-6288240492b2.png)
-
-
-
 
 
 
@@ -189,19 +152,7 @@ Foreground versus background processes
 There are two types of processes in Linux:
 
 -   Foreground processes
-
-```{=html}
-<!-- -->
-```
 -   Background processes
-
-A foreground process is a process that is attached to your terminal. You
-have to wait for a foreground process to finish before you can continue
-using your terminal.
-
-On the other hand, a background process is a process that is not
-attached to your terminal, and so you can use your terminal while a
-background process is running.
 
 The [yes] command outputs any string that follows it repeatedly
 until killed:
@@ -314,7 +265,7 @@ Notice that the PID of Firefox is [4218] on my system. I can kill
 (terminate) Firefox by sending a [SIGKILL] signal as follows:
 
 ``` 
-elliot@ubuntu-linux:~$ kill -SIGKILL 4218
+elliot@ubuntu-linux:~$ kill -SIGKILL ADD_FIREFOX_PROCESS_ID
 [1]+ Killed             firefox
 ```
 
@@ -322,7 +273,7 @@ This will immediately shut down Firefox. You can also use the numeric
 value of the [SIGKILL] signal instead:
 
 ``` 
-elliot@ubuntu-linux:~$ kill -9 4218
+elliot@ubuntu-linux:~$ kill -9 ADD_FIREFOX_PROCESS_ID
 ```
 
 In general, the syntax for the [kill] command is as follows:
@@ -339,23 +290,22 @@ elliot@ubuntu-linux:~$ firefox &
 ```
 
 Notice that the PID of Firefox is [4907] on my system. Now go
-ahead and start playing a YouTube video on Firefox. After you have done
+ahead and open google.com on Firefox. After you have done
 that, go back to your terminal and send the [SIGSTOP] signal to
 Firefox:
 
 ``` 
-elliot@ubuntu-linux:~$ kill -SIGSTOP 4907
+elliot@ubuntu-linux:~$ kill -SIGSTOP ADD_FIREFOX_PROCESS_ID
 ```
 
-You will notice that Firefox becomes unresponsive and your YouTube video
-is stopped; no problem -- we can fix that by sending the [SIGCONT]
+You will notice that Firefox becomes unresponsive; no problem -- we can fix that by sending the [SIGCONT]
 signal to Firefox:
 
 ``` 
-elliot@ubuntu-linux:~$ kill -SIGCONT 4907
+elliot@ubuntu-linux:~$ kill -SIGCONT ADD_FIREFOX_PROCESS_ID
 ```
 
-This will resurrect Firefox, and your YouTube video will now resume.
+This will resurrect Firefox, and your webpage will now resume.
 
 So far, you have learned three signals:
 
@@ -379,39 +329,6 @@ elliot@ubuntu-linux:~$ pkill -SIGSTOP terminal
 
 Haha! Your terminal is now frozen. I will let you handle that!
 
-There are many other signals that you can send to processes; check the
-following [man] page to understand the use of each signal:
-
-``` 
-elliot@ubuntu-linux:~$ man signal
-```
-
-
-Working with process priority
-=============================
-
-
-Each process has a priority that is determined by the niceness scale,
-which ranges from **-20** to **19**. The lower the nice value, the
-higher the priority of a process, so a nice value of **-20** gives the
-highest priority to a process. On the other hand, a nice value of **19**
-gives the lowest priority to a process:
-
-
-![](./images/5b04029c-831e-4de6-b062-6243e1ce2066.png)
-
-
-
-
-
-You might be asking yourself: *Why do we care about a process priority?*
-The answer is efficiency! Your CPU is like a waiter in a busy
-restaurant. An efficient waiter goes around all the time to ensure that
-all the customers are happily served. Similarly, your CPU allocates time
-to all processes running on your system. A process with a high priority
-gets a lot of attention from the CPU. On the other hand, a process with
-a low priority doesn\'t get as much attention from the CPU.
-
 Viewing a process priority
 --------------------------
 
@@ -421,6 +338,8 @@ Start Firefox as a background process:
 elliot@ubuntu-linux:~$ firefox &
  [1] 6849
 ```
+
+**Note: Replace `6849` with your firefox processId in commands below.**
 
 You can use the [ps] command to view a process\' nice value:
 
@@ -437,12 +356,7 @@ Setting priorities for new processes
 ------------------------------------
 
 You can use the [nice] command to start a process with your
-desired priority. The general syntax of the [nice] command goes as
-follows:
-
-``` 
-nice -n -20 →19 process
-```
+desired priority.
 
 Let\'s say you are about to upgrade all the packages on your system; it
 would be wise to give such a process the highest priority possible. To

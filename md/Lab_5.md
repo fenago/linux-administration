@@ -1,30 +1,6 @@
 
-Read Your Manuals!
-
-You may be telling yourself right now, \"Linux is so hard! There are a
-lot of commands and even more command options! There is no way I can
-master all of these commands and commit them to memory.\" If this is
-what you think, believe me, you are smart. It\'s insane to remember all
-the Linux commands that exist, even the most experienced Linux
-administrator would never be able to remember all commands, not even
-Linus Torvalds himself!
-
-So wait? If that\'s the case, what is the solution then? The answer lies
-in the beautiful world of Linux documentation. Linux is very well
-documented to the extent that it\'s hard to get lost in it. There are a
-variety of tools in Linux that help you in not just remembering the
-commands, but also in understanding how to use them.
-
-Having met a lot of Linux professionals throughout my career, I noticed
-that the most skilled Linux administrators are not the ones who
-remember, but the ones who know how to make the most use of the Linux
-documentation. Ladies and gentlemen, I highly recommend you fasten your
-seatbelt and read this chapter carefully. I promise you that the fear in
-your heart will go away soon!
-
-
-The four categories of linux commands
-=====================================
+Lab: Read Your Manuals!
+=======================
 
 
 All Linux commands must fall into one of these following four
@@ -38,10 +14,6 @@ categories:
 3.  **A shell builtin**: The shell supports internal commands as well.
     The [exit] and [cd] commands are two examples of a shell
     builtin command.
-
-```{=html}
-<!-- -->
-```
 4.  **A shell function**: These are functions that help us achieve a
     specific task and are essential in writing shell scripts. We will
     cover this in more detail later, for now, just know they exist.
@@ -154,25 +126,7 @@ As we already know, [which] displays a command\'s location.
 Help for shell builtins
 =======================
 
-
-If you play around enough with [man] pages, you may notice that a
-lot of shell builtin commands do not have a [man] page. For
-instance, there is no [man] page for the [cd] or the
-[exit] commands:
-
-``` 
-elliot@ubuntu-linux:~$ type cd 
-cd is a shell builtin 
-elliot@ubuntu-linux:~$ man cd 
-No manual entry for cd 
-elliot@ubuntu-linux:~$ type exit 
-exit is a shell builtin 
-elliot@ubuntu-linux:~$ man exit 
-No manual entry for exit
-```
-
-That\'s because shell builtin commands do not have [man] pages,
-but do not freak out just yet! You can still find help on how to use
+You can find help on how to use
 shell builtins by using the [help] command. For example, to get
 help on how to use the [exit] command, you can run:
 
@@ -277,10 +231,11 @@ Now list the contents of the directory to see what\'s inside:
 ``` 
 elliot@ubuntu-linux:/usr/share/doc/nano$ ls
 
-changelog.Debian.gz  copyright  examples
+AUTHORS          NEWS.gz  THANKS.gz  changelog.Debian.gz  examples  nano.html
+IMPROVEMENTS.gz  README   TODO       copyright            faq.html
 ```
 
-As you saw in this chapter, Linux has a variety of helpful tools
+As you saw in this lab, Linux has a variety of helpful tools
 available at your disposal; so make sure you utilize them!
 
 

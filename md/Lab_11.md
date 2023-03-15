@@ -1,10 +1,8 @@
 
-Let\'s Play Find and Seek
+Lab: Let\'s Play Find and Seek
+------------------------------
 
-We all forget where we put our stuff sometimes; I always forget where I
-keep my wallet and where I save my files. I am pretty sure that you also
-forget where you keep your files, and so in this chapter, you will learn
-two different ways you can use to search and locate files.
+In this lab, you will learn two different ways you can use to search and locate files.
 
 
 The locate command
@@ -41,7 +39,6 @@ we don't remember where it is; in this case, you can run the
 ``` 
 root@ubuntu-linux:~# locate facts.txt
 /home/elliot/facts.txt
-/var/facts.txt
 ```
 
 BOOM! It displayed the location of the file [facts.txt].
@@ -86,21 +83,7 @@ search.
 The find command
 ================
 
-
-The [find] command is a much more powerful command you can use to
-search for files in Linux. Unlike the [locate] command, the
-[find] command runs in real time, so you don't need to update any
-file database. The general syntax of the [find] command is as
-follows:
-
-``` 
-find [starting-point(s)] [options] [expression]
-```
-
-The [find] command will search under each starting-point
-(directory) you specify.
-
-For example, to search for all the [.txt] files under your
+To search for all the [.txt] files under your
 [/home] directory, you can run:
 
 ``` 
@@ -261,9 +244,6 @@ Now the file [LARGE.TXT] is removed:
 root@ubuntu-linux:~# ls -l LARGE.TXT
 ls: cannot access 'LARGE.TXT': No such file or directory
 ```
-
-I highly recommend that you read the find [man] pages to explore
-the numerous other options that can be used.
 
 
 Knowledge check

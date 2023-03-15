@@ -1,11 +1,19 @@
 
-Copying, Moving, and Deleting Files
+Lab: Copying, Moving, and Deleting Files
+----------------------------------------
 
 If you have ever owned a computer before, then you know how important it
 is to be able to copy and move files around. That\'s why I dedicated an
-entire chapter to talk just about that: copying, moving, and deleting
+entire lab to talk just about that: copying, moving, and deleting
 files.
 
+**Note:** Make sure to add following text in `/home/elliot/cats.txt` before starting the lab.
+
+```
+I love cars!
+I love cats!
+I love penguins!
+```
 
 Copying one file
 ================
@@ -14,6 +22,7 @@ Copying one file
 Sometimes you need to copy a single file. Luckily this is a simple
 operation on the command line. I have a file named [cats.txt] in
 my home directory:
+
 
 ``` 
 elliot@ubuntu-linux:~$ cat cats.txt 
@@ -45,7 +54,7 @@ the [cp cats.txt /tmp] command:
 ``` 
 elliot@ubuntu-linux:~$ cp cats.txt /tmp
 elliot@ubuntu-linux:~$ cd /tmp
-elliot@ubuntu-linux:/tmp$ ls
+elliot@ubuntu-linux:/tmp$ ls cat*
 cats.txt
 elliot@ubuntu-linux:/tmp$
 ```
@@ -53,17 +62,13 @@ elliot@ubuntu-linux:/tmp$
 Notice that the copied file has the same name as the original file. I
 can also make another copy in **[/tmp]** with a different name:
 
-<div>
-
 ``` 
 elliot@ubuntu-linux:~$ cp cats.txt /tmp/cats2.txt
 elliot@ubuntu-linux:~$ cd /tmp
-elliot@ubuntu-linux:/tmp$ ls 
+elliot@ubuntu-linux:/tmp$ ls cat*
 cats2.txt  cats.txt
 elliot@ubuntu-linux:/tmp$
 ```
-
-</div>
 
 
 Copying multiple files
@@ -117,8 +122,6 @@ elliot@ubuntu-linux:~/cities$ ls
 london paris tokyo
 ```
 
-<div>
-
 Now if you want to copy the [cities] directory to [/tmp],
 you have to pass the recursive [-r] option to the [cp]
 command as follows:
@@ -145,8 +148,6 @@ apple.txt banana.txt carrot.txt cats2.txt cats.txt cities
 elliot@ubuntu-linux:/tmp$ ls cities
 london paris tokyo
 ```
-
-</div>
 
 
 Copying multiple directories
@@ -403,8 +404,6 @@ elliot@ubuntu-linux:~$ ls
 Desktop dir1 small
 ```
 
-<div>
-
 Cool! We got rid of the [garbage] directory.
 
 You can also use the [rmdir] command to remove only empty
@@ -443,7 +442,7 @@ remember here is that the [rm -r] command will remove any
 directory (both empty and nonempty). On the other hand, the
 [rmdir] command will only delete empty directories.
 
-For the final example in this chapter, let\'s create a directory named
+For the final example in this lab, let\'s create a directory named
 [garbage3], then create two files [a1.txt] and
 [a2.txt] inside it:
 
@@ -454,10 +453,6 @@ elliot@ubuntu-linux:~/garbage3$ touch a1.txt a2.txt
 elliot@ubuntu-linux:~/garbage3$ ls
 a1.txt a2.txt
 ```
-
-</div>
-
-<div>
 
 Now let\'s get back to Elliot\'s home directory and attempt to remove
 [garbage3]:
@@ -478,8 +473,6 @@ successfully removed it.
 
 Nothing makes information stick in your head like a good knowledge-check
 exercise.
-
-</div>
 
 
 Knowledge check

@@ -5,12 +5,7 @@ Lab: Meet the Editors
 
 **Graphical editors -- gedit and kate**
 
-We start with the most basic and simple editors out there. These are the
-graphical editors! If you are using a **GNOME** version of any Linux
-distribution, then you will have the text editor [gedit] installed
-by default. On the other hand, if you are using a **KDE** version of
-Linux, then you will have the text editor [kate] installed by
-default.
+We start with the most basic and simple editors out there.
 
 **Note:** Make sure to run following command in the terminal first as root user:
 
@@ -23,6 +18,7 @@ text file with [gedit], then you run the [gedit] command
 followed by any filename:
 
 ``` 
+elliot@ubuntu-linux:~$ export DISPLAY=:1.0
 elliot@ubuntu-linux:~$ gedit /proc/cpuinfo
 ```
 
@@ -33,12 +29,9 @@ CPU information.
 ![](./images/49e85add-916e-4449-8a63-b75b35809869.png)
 
 
-
-
-
-
-If you don\'t have [gedit] and have [kate] instead, then you
-can run:
+If you want to view a
+text file with [kate], then you run the [kate] command
+followed by any filename:
 
 ``` 
 elliot@ubuntu-linux:~$ kate /proc/cpuinfo
@@ -104,12 +97,16 @@ like that in the following screenshot:
 ![](./images/2aa96d45-d12c-43de-97b0-353f6b75b7b1.png)
 
 
-
-
-
-
 Now add the six lines that are shown in the following screenshot:
 
+```
+Apples are blue.
+Grapes are green.
+Bananas are yellow.
+Roses are red.
+Sky is high.
+Earth is flat.
+```
 
 ![](./images/e874bd8b-33be-4a54-a3c7-11012f68e4cb.png)
 
@@ -464,6 +461,8 @@ Cherries are red.
 You can now view the contents of the file [facts.txt] from the
 comfort of your terminal without having to open any text editor.
 
+**Task**
+
 The [cat] command can do more than just viewing a file. It can
 also concatenate (put together) files. To demonstrate, create the
 following three files with your favorite text editor:
@@ -543,12 +542,6 @@ The [tac] command also concatenates files, just like the
 The more command
 ----------------
 
-Viewing files with the [cat] command is a good choice when the
-file is small, and there aren\'t many lines of text to display. If you
-want to view a big file, it\'s better to use the [more] command.
-The [more] command displays the content of a file one page at a
-time; it is basically a paging program.
-
 Let\'s view the contents of the file [/etc/services] with the
 [more] command:
 
@@ -579,10 +572,6 @@ navigate in [more]:
 
 -   *Enter* \> to scroll down one line.
 -   Space Bar \> to go to the next page.
-
-```{=html}
-<!-- -->
-```
 -   *b* \> to go back one page.
 -   *q* \> to quit.
 
@@ -591,17 +580,6 @@ The [/etc/services] file stores information on numerous services
 
 The less command
 ----------------
-
-The [less] command is an improved version of the [more]
-command. Yes, you read this correctly; less is better than more! In
-fact, the famous idiom *less is more* originated from the idea that
-[less] offers more than [more].
-
-The [less] command is another pager program, just like
-[more]; it allows you to view text files one page at a time. The
-advantage of [less] is that you can use the UP/DOWN arrow keys to
-navigate through the file. Also, [less] is faster than
-[more].
 
 You can view the [/etc/services] file with [less] by running
 the command:

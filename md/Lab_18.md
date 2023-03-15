@@ -1,7 +1,7 @@
 
 Archiving and Compressing Files
 
-In this chapter, you will learn how to put a group of files together
+In this lab, you will learn how to put a group of files together
 into a single archive. You will also learn how to compress an archive
 file using various compression methods.
 
@@ -18,16 +18,6 @@ directory named [backup] in [/root]:
 root@ubuntu-linux:~# mkdir /root/backup
 ```
 
-To create an archive, we use the tape archive command [tar]. The
-general syntax to create an archive is as follows:
-
-``` 
-tar -cf archive_name files
-```
-
-The [-c] option is the shorthand notation of [\--create],
-which creates the archive. The [-f] option is the shorthand
-notation of [\--file], which specifies the archive name.
 
 Now let\'s create an archive named [scripts.tar] in
 [/root/backup] for all the bash scripts in [/home/elliot].
@@ -81,16 +71,7 @@ size.sh
 Viewing archive contents
 ========================
 
-
-You may want to see the contents of an archive. To do that, you can use
-the [-t] option along with the [-f] option followed by the
-archive you wish to view:
-
-``` 
-tar -tf archive
-```
-
-For example, to view the contents of the archive [scripts.tar]
+To view the contents of the archive [scripts.tar]
 that we just created, you can run the command:
 
 ``` 
@@ -130,15 +111,7 @@ let\'s create a directory named [myscripts] in [/root]:
 root@ubuntu-linux:/# mkdir /root/myscripts
 ```
 
-To extract files from an archive, we use the [-x] option along
-with the [-f] option, followed by the archive name. Then, we use
-the [-C] option followed by the destination directory as follows:
-
-``` 
-tar -xf archive -C destination
-```
-
-So to extract all the files in the [scripts.tar] archive to the
+To extract all the files in the [scripts.tar] archive to the
 [/root/myscripts] directory, you can run the following command:
 
 ``` 
@@ -183,22 +156,7 @@ And sure enough, we see all our bash scripts in the
 Compressing with gzip
 =====================
 
-
-Grouping files in an archive doesn\'t save disk space on its own. We
-would need to compress an archive to save disk space. Numerous
-compression methods are available for us to use on Linux. However, we
-are only going to cover the three most popular compression methods.
-
-The most popular compression method on Linux is arguably [gzip],
-and the upside is that it\'s really fast. You can compress an archive
-file with [gzip] by using the [-z] option with the
-[tar] command as follows:
-
-``` 
-tar -czf compressed_archive archive_name
-```
-
-So to compress the [scripts.tar] archive into a
+To compress the [scripts.tar] archive into a
 [gzip]-compressed archive named [scripts.tar.gz], you first
 need to change to the [/root/backup] directory and then run the
 following command:
@@ -256,23 +214,7 @@ contents of an uncompressed archive.
 Compressing with bzip2
 ======================
 
-
-[bzip2] is another popular compression method used on Linux. On
-average, [bzip2] is slower than [gzip]; however,
-[bzip2] does a better job of compressing files to smaller sizes.
-
-You can compress an archive with [bzip2] compression by using the
-[-j] option with the [tar] command as follows:
-
-``` 
-tar -cjf compressed_archive archive_name
-```
-
-Notice the only difference here is that we use the [-j] option for
-[bzip2] compression instead of [-z] for [gzip]
-compression.
-
-So to compress the [scripts.tar] archive into a
+To compress the [scripts.tar] archive into a
 [bzip2]-compressed archive named [scripts.tar.bz2], you
 first need to change to the [/root/backup] directory and then run
 the following command:

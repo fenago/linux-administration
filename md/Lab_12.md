@@ -1,64 +1,14 @@
 
 You Got a Package
 
-In this chapter, you will learn how to manage software applications on
+In this lab, you will learn how to manage software applications on
 your Linux system. You will learn how to use the Debian package manager
 to download, install, remove, search, and update software packages.
-
-
-What is a package?
-==================
-
-
-In Linux, a package is a compressed archive file that contains all the
-necessary files for a particular software application to run. For
-example, a web browser like Firefox comes in a package that has all the
-files needed for Firefox to run.
-
-
-The role of a package manager
-=============================
-
-
-Package managers are programs that we use in Linux to manage packages;
-that is, to download, install, remove, search, and update packages. Keep
-in mind that different Linux distributions have different package
-managers. For example, [dpkg], which stands for Debian package
-manager, is the package manager for Ubuntu and other Debian-based Linux
-distributions. On the other hand, RedHat-based Linux distributions like
-Fedora and CentOS use [rpm], which stands for RedHat Package
-Manager. Other Linux distributions like SUSE use [zypper] as the
-package manager and so on.
-
-
-Where do packages come from?
-============================
-
-
-Very rarely will you find experienced Linux users going to a website to
-download a software package as Windows or macOS users do. Instead, each
-Linux distribution has its list of sources from where it gets the
-majority of its software packages. These sources are also referred to as
-**repositories**. The following figure illustrates the process of
-downloading packages on your Linux system:
-
-
-![](./images/00e7c7cd-9280-4410-8c08-bd84743c3593.png)
 
 
 How to download packages
 ========================
 
-
-On Ubuntu and other Debian Linux distributions, you can use the
-command-line utility [apt-get] to manage packages. Behind the
-scenes, [apt-get] makes use of the package manager [dpkg].
-To download a package, you can run the command [apt-get download]
-followed by the package name:
-
-``` 
-apt-get download package_name
-```
 
 As the [root] user, change to the [/tmp] directory:
 
@@ -80,7 +30,8 @@ The [cmatrix] package will be downloaded in [/tmp]:
 
 ``` 
 root@ubuntu-linux:/tmp# ls 
-cmatrix_1.2a-5build3_amd64.deb
+
+cmatrix_2.0-2_amd64.deb
 ```
 
 Notice the [.deb] extension in the package name, which signals
@@ -89,25 +40,30 @@ with the [.rpm] extension. You can list the files inside the
 [cmatrix] package by running the command [dpkg -c] as
 follows:
 
+**Note:** Please update package name in below command incase you get different version.
+
 ``` 
-root@ubuntu-linux:/tmp# dpkg -c cmatrix_1.2a-5build3_amd64.deb
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./usr/
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./usr/bin/
--rwxr-xr-x root/root 18424 2018-04-03 06:17 ./usr/bin/cmatrix
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./usr/share/
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./usr/share/consolefonts/
--rw-r--r-- root/root  4096 1999-05-13 08:55 ./usr/share/consolefonts/matrix.fnt
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./usr/share/doc/
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./usr/share/doc/cmatrix/
--rw-r--r-- root/root  2066 2000-04-03 19:29 ./usr/share/doc/cmatrix/README
--rw-r--r-- root/root   258 1999-05-13 09:12 ./usr/share/doc/cmatrix/TODO
--rw-r--r-- root/root  1128 2018-04-03 06:17 ./usr/share/doc/cmatrix/copyright
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./usr/share/man/
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./usr/share/man/man1/
--rw-r--r-- root/root   932 2018-04-03 06:17 ./usr/share/man/man1/cmatrix.1.gz
-drwxr-xr-x root/root     0 2018-04-03 06:17 ./usr/share/menu/
--rw-r--r-- root/root   392 2018-04-03 06:17 ./usr/share/menu/cmatrix
+root@ubuntu-linux:/tmp# dpkg -c cmatrix_2.0-2_amd64.deb
+
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./usr/
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./usr/bin/
+-rwxr-xr-x root/root     22680 2019-07-09 19:01 ./usr/bin/cmatrix
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./usr/share/
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./usr/share/applications/
+-rw-r--r-- root/root       241 2019-05-07 16:12 ./usr/share/applications/cmatrix.desktop
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./usr/share/consolefonts/
+-rw-r--r-- root/root      4096 2019-03-27 14:36 ./usr/share/consolefonts/matrix.fnt
+-rw-r--r-- root/root      1727 2019-07-09 19:01 ./usr/share/consolefonts/matrix.psf.gz
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./usr/share/doc/
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./usr/share/doc/cmatrix/
+-rw-r--r-- root/root        65 2019-03-27 14:36 ./usr/share/doc/cmatrix/README
+-rw-r--r-- root/root      3221 2019-03-27 14:36 ./usr/share/doc/cmatrix/README.md
+-rw-r--r-- root/root      1730 2019-07-09 19:01 ./usr/share/doc/cmatrix/changelog.Debian.gz
+-rw-r--r-- root/root      1109 2019-05-07 16:12 ./usr/share/doc/cmatrix/copyright
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./usr/share/man/
+drwxr-xr-x root/root         0 2019-07-09 19:01 ./usr/share/man/man1/
+-rw-r--r-- root/root       877 2019-07-09 19:01 ./usr/share/man/man1/cmatrix.1.gz
 ```
 
 Notice that we only downloaded the package, but we didn't install it
@@ -127,9 +83,9 @@ You can use the [-i] option with the [dpkg] command to
 install a downloaded package:
 
 ``` 
-root@ubuntu-linux:/tmp# dpkg -i cmatrix_1.2a-5build3_amd64.deb 
+root@ubuntu-linux:/tmp# dpkg -i cmatrix_2.0-2_amd64.deb
 Selecting previously unselected package cmatrix.
-(Reading database ... 178209 files and directories currently installed.) Preparing to unpack cmatrix_1.2a-5build3_amd64.deb ...
+(Reading database ... 178209 files and directories currently installed.) Preparing to unpack cmatrix_2.0-2_amd64.deb...
 Unpacking cmatrix (1.2a-5build3) ... 
 Setting up cmatrix (1.2a-5build3) ...
 Processing triggers for man-db (2.8.3-2ubuntu0.1) ... 
@@ -280,17 +236,7 @@ removed as well.
 How to search for packages
 ==========================
 
-
-Sometimes you are unsure of a package name. Then, in this case, you
-can't install it until you look it up. You can search for a package by
-using the command [apt-cache search] followed by your search term
-or keyword:
-
-``` 
-apt-cache search keyword
-```
-
-For example, let's say that you want to install the [wireshark]
+Let's say that you want to install the [wireshark]
 package, but you can only remember that the package name has the word
 [shark] in it. In this case, you can run the command:
 
@@ -386,7 +332,7 @@ Installed-Size: 48
 Depends: libc6 (>= 2.4), libncurses5 (>= 6), libtinfo5 (>= 6) 
 Recommends: kbd
 Suggests: cmatrix-xfont
-Filename: pool/universe/c/cmatrix/cmatrix_1.2a-5build3_amd64.deb 
+Filename: pool/universe/c/cmatrix/cmatrix_2.0-2_amd64.deb
 Size: 16084
 MD5sum: 8dad2a99d74b63cce6eeff0046f0ac91 
 SHA1: 3da3a0ec97807e6f53de7653e4e9f47fd96521c2
@@ -425,8 +371,8 @@ installed for [cmatrix] to work properly, you can run the command:
 root@ubuntu-linux:~# apt-cache depends cmatrix 
 cmatrix
   Depends: libc6 
-  Depends: libncurses5 
-  Depends: libtinfo5 
+  Depends: libncurses6 
+  Depends: libtinfo6 
   Recommends: kbd 
   Suggests: cmatrix-xfont
 ```
@@ -434,8 +380,8 @@ cmatrix
 As you can see, the [cmatrix] package depends on three packages:
 
 -   [libc6]
--   [libncurses5]
--   [libtinfo5]
+-   [libncurses6]
+-   [libtinfo6]
 
 Those three packages have to be installed on the system in order for
 [cmatrix] to run properly.
@@ -478,25 +424,14 @@ You can pipe the output to the [wc -l] command to get the total
 number of available packages:
 
 ``` 
-root@ubuntu-linux:~# apt-cache pkgnames | wc -l 64142
+root@ubuntu-linux:~# apt-cache pkgnames | wc -l
 ```
 
-Wow! That's a massive number; over 64,000 available packages on my
+Wow! That's a massive number; over 79,000 available packages on my
 system.
 
-You may also be interested to know which repositories (sources) your
-system used to obtain all these packages. These repositories are
-included in the file [/etc/ap- t/sources.list] and in any file
-with the suffix [.list] under the directory [/etc/apt/-
-sources.list.d/]. You can check the [man] page:
 
-``` 
-root@ubuntu-linux:~# man sources.list
-```
-
-To learn how you can add a repository to your system.
-
-You can also use the [apt-cache policy] command to list all the
+You can use the [apt-cache policy] command to list all the
 enabled repositories on your system:
 
 ``` 
@@ -561,9 +496,6 @@ cmatrix:
     500 http://ca.archive.ubuntu.com/ubuntu bionic/universe amd64 Packages
     100 /var/lib/dpkg/status
 ```
-
-From the output, you can see that the [cmatrix] package comes from
-the bionic/universe repository at <http://ca.archive.ubuntu.com/ubuntu>.
 
 
 Patching your system

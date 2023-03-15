@@ -5,7 +5,7 @@ Linux is a multiuser operating system, which means that many users are
 allowed to access the system at the same time. In real life, you barely
 find a Linux server with just one user. On the contrary, you see a lot
 of users on one server. So let\'s get real and populate our system with
-various users and groups. In this chapter, you will learn how to add
+various users and groups. In this lab, you will learn how to add
 users and groups to your Linux system. You will also learn how to manage
 user and group accounts in all sorts of ways. Furthermore, you will also
 learn how to manage Linux file permissions.
@@ -13,16 +13,6 @@ learn how to manage Linux file permissions.
 
 The /etc/passwd file
 ====================
-
-
-In Linux, user information is stored in the [/etc/passwd] file.
-Every line in [/etc/passwd] corresponds to exactly one user. When
-you first open [/etc/passwd], you will see a lot of users, and you
-will wonder, *where are all these users coming from?* The answer is
-simple: most of these users are service users, and they are used by your
-system to start up various applications and services. However, our main
-focus of this chapter will be system users; those are real people like
-you and me!
 
 Every line in [/etc/passwd] consists of 7 fields, each separated
 by a colon, and each field represents a user attribute. For example, the
@@ -100,11 +90,11 @@ passwd: password updated successfully
 Now, let\'s create user [jerry]. But this time, we will choose the
 following attributes for user [jerry]:
 
-  --------- -------------------------
-  UID       [777]
-  Comment   [Jerry the Mouse]
-  Shell     [/bin/bash]
-  --------- -------------------------
+```
+UID       [777]
+Comment   [Jerry the Mouse]
+Shell     [/bin/bash]
+```
 
 This is easy to do with the [useradd] command:
 
@@ -148,7 +138,8 @@ Now, let\'s switch to user [tom]:
 
 ``` 
 root@ubuntu-linux:~# su - tom
-$ whoami tom
+$ whoami 
+tom
 $ pwd
 /home/tom
 $
@@ -460,39 +451,7 @@ And as you can see, [edward]\'s home directory is removed.
 The /etc/group file
 ===================
 
-
-In schools, kids are usually grouped into different groups. For example,
-kids who like dancing will be part of the dance group. The geeky kids
-will form the science group. In case you are wondering, I used to be
-part of the sports group because I was pretty damn fast!
-
-We have the same concept in Linux as users who share similar
-characteristics are placed in the same group.
-
-
-**WHAT IS A GROUP?**
-
 A group is a collection of users who share the same role or purpose.
-
-
-All groups have their information stored in the file [/etc/group].
-And just like with the [/etc/passwd] file, every line in
-[/etc/group] corresponds to exactly one group, and each line
-consists of [4] fields. For example, one of the most famous groups
-in Linux is the [sudo] group:
-
-
-![](./images/44e2ea2b-9bbb-4336-8470-925e1bdf5d88.png)
-
-
-
-
-
-The following table breaks down those four fields in [/etc/group]
-and explains each one of them:
-
-![](./images/8.png)
-
 
 Adding groups
 =============
@@ -633,20 +592,8 @@ next section.
 Primary versus secondary groups
 ===============================
 
-
-Every user in Linux must be a member of a primary group. Primary groups
-are also referred to as login groups. By default, whenever a new user is
-created, a group is also created with the same name as the user, and
-this group becomes the primary group of the new user.
-
-On the other hand, a user may or may not be a member of a secondary
-group. Secondary groups are also sometimes referred to as supplementary
-groups. You can think of a secondary group as any group that a user is a
-member of aside from the user\'s primary group.
-
-Do not worry if you don\'t understand the concept of primary and
-secondary groups just yet; it will become crystal clear by the end of
-this chapter.
+Primary versus secondary groups difference will become crystal clear by the end of
+this lab.
 
 Let\'s create a new user named [dummy]:
 
@@ -814,16 +761,9 @@ Now do a long listing on the file [mysmurf]:
 ![](./images/79062b36-ce06-4e34-82c5-6bf554503189.png)
 
 
-
-
-
 You will see the name of the user (the user owner) who owns the file in
 the third column of the output, which is, by default, the user who
 created the file.
-
-On the fourth column of the output, you will see the name of the group
-(the group owner) of the file, which is, by default, the primary group
-of the user owner.
 
 The [developers] group is the primary group of user [smurf],
 and hence [developers] became the group owner of the file
@@ -915,40 +855,6 @@ will leave that for you to do as an exercise!
 Understanding file permissions
 ==============================
 
-
-In Linux, every file is assigned access permissions for three different
-entities; these entities are:
-
--   The user owner of the file
--   The group owner of the file
--   Everyone else (also referred to as others/world)
-
-We are already familiar with the user owner and the group owner;
-everyone else refers to any user on the system who is not the user owner
-and not the group owner.
-
-You can think of these three entities like you, your friends, and
-everyone else. There are some things that you don\'t like to share with
-anyone, other things you like to share with your friends, and things you
-may like to share with everyone.
-
-Each file has three types of access permissions:
-
--   Read
--   Write
--   Execute
-
-The meaning of each of these access permissions is not the same for
-files and directories. The following diagram explains the differences
-between access permissions for files versus directories:
-
-
-![](./images/d5bb093d-f08a-4ee0-8ae0-f2ca61e1b4f3.png)
-
-
-
-
-
 You can view the permissions of a file by doing a long listing. For
 example, to see the current permissions set on the [mysmurf] file,
 you can run:
@@ -968,40 +874,7 @@ following diagram:
 ![](./images/6c0e551d-ea7e-484d-a005-534fd39a6bb0.png)
 
 
-
-
-
-Notice the first slot determines the file type; it can be:
-
--   [-] for regular files
--   [d] for directories
--   [l] for soft links
--   [b] for block devices
--   [c] for character devices
-
-The next three slots determine the permissions granted for the owner of
-the file. The first of these slots determines the read permission; it
-can either be:
-
--   [r] for read access
--   [-] for no read access
-
-The second of these slots determines the write permission; it can either
-be:
-
--   [w] for write access
--   [-] for no write access
-
-The third slot determines the execute permission; it can either be:
-
--   [x] for execute access
--   [-] for no execute access
-
-The same logic is applied to the next three slots, which determine the
-permissions for the group owner, and lastly, the final three slots,
-which determine the permissions for everyone else.
-
-Now let\'s get our hands dirty and do some examples to reinforce our
+Now let\'s do some examples to reinforce our
 understanding of file permissions. Let\'s first edit the [mysmurf]
 file and add the following line [Smurfs are blue!] so it looks
 like this:
@@ -1161,7 +1034,7 @@ elliot@ubuntu-linux:~$ echo date >> mydate.sh
 ```
 
 Do not worry about the meaning of the line [\'\#/bin/bash\'] now;
-I will explain it in a later chapter. Anyways, let\'s view the content
+I will explain it in a later lab. Anyways, let\'s view the content
 of the file [mydate.sh]:
 
 ``` 
@@ -1201,7 +1074,7 @@ Wed Oct 23 12:38:51 CST 2019
 
 Wow! The current date is displayed! You have created your first Bash
 script and have run it! Bash scripting will be covered in detail in a
-later chapter. But now at least you know what it means for a file to be
+later lab. But now at least you know what it means for a file to be
 executable. Now remove the execute permission by running the command:
 
 ``` 
@@ -1381,18 +1254,7 @@ zero permissions for everyone else. Let\'s create a file inside
 root@ubuntu-linux:~# touch /root/gold
 ```
 
-Now let\'s switch to user [smurf] and try to list the contents of
-the [/root] directory:
-
-``` 
-root@ubuntu-linux:~# su - smurf 
-smurf@ubuntu-linux:~$ ls /root
-ls: cannot open directory '/root': Permission denied
-```
-
-User [smurf] gets a permission denied error as he\'s got no read
-permissions on the directory [/root]. Now, can [smurf]
-create a file inside [/root]?
+Now let\'s switch to user [smurf] and try to create a file inside [/root]:
 
 ``` 
 smurf@ubuntu-linux:~$ touch /root/silver
@@ -1408,16 +1270,7 @@ rm: cannot remove '/root/gold': Permission denied
 ```
 
 Again, no write permissions, so he can\'t delete a file in
-[/root]. Finally, can user [smurf] change to the
-[/root] directory?
-
-``` 
-smurf@ubuntu-linux:~$ cd /root
--su: cd: /root: Permission denied
-```
-
-He cannot because [smurf] needs the execute permission to be able
-to change to the [/root] directory. Now, let\'s switch back to the
+[/root]. Now, let\'s switch back to the
 [root] user and start adding some permissions:
 
 ``` 
@@ -1481,28 +1334,6 @@ has the write permission.
 Using octal notation
 ====================
 
-
-Instead of the letters [r], [w], and [x], you can use
-the numbers [4], [2], and [1] to set file permissions.
-Take a look at the following image:
-
-
-![](./images/ecd00055-eb8a-47ec-b30d-24a06f8d6508.png)
-
-
-
-Notice that the first number, [7], is basically the addition of
-the three numbers: [4 (r) + 2 (w) + 1 (x)], which sets full
-permissions to the file owner. The second number, [6], is the
-addition of the two numbers: [4 (r) + 2(w)], which sets the read
-and write permissions to the group owner. Finally, the third number,
-[4], which sets the read permission to others.
-
-I know what you are thinking: \"Why would I want to do math when I can
-just use the literal notation [rwx]?\" And trust me, I feel you. A
-lot of people prefer the literal notation over the numeric notation, but
-some people just love numbers way too much!
-
 Let\'s do some practice with the octal notation. There are currently
 zero permissions on the file [mysmurf]:
 
@@ -1539,20 +1370,13 @@ smurf@ubuntu-linux:~$ ls -l mysmurf
 -rwxr----- 1 smurf developers 64 Oct 23 13:38 mysmurf
 ```
 
-Numbers are easy to work with once you get the hang of it. Just remember
-that:
-
--   [4]: Read
--   [2]: Write
--   [1]: Execute
--   [0]: Zero permissions
 
 The following table summarizes all the possible permissions
 combinations:
 
 ![](./images/9.png)
 
-This chapter was a bit lengthy. Go take a break and then come back and
+This lab was a bit lengthy. Go take a break and then come back and
 attack the knowledge check exercises!
 
 

@@ -1,7 +1,7 @@
 
 Analyzing and Manipulating Files
 
-In this chapter, you will learn various Linux commands that will help
+In this lab, you will learn various Linux commands that will help
 you analyze and manipulate files. You will learn how to compare two
 files and get the file size. You will also learn how to reveal the type
 of a file and display the number of characters, words, and lines in a
@@ -136,25 +136,11 @@ facts.txt: ASCII text
 
 The output shows that [facts.txt] is an ASCII text file.
 
-
-**WHAT IS ASCII?**
-
-**ASCII**, which is short for **American Standard Code for Information
-Interchange**, is a code for representing [128] English characters
-as numbers, with each letter assigned a number from [0] to
-[127].
-
-
-Your computer doesn't understand human language (letters), just numbers!
-And so each character in the English language is translated to a number.
-Your computer sees any text file as just a bunch of numbers piled
-together!
-
 Now let's create a soft link named [soft.txt] to the
 [facts.txt] file:
 
 ``` 
-elliot@ubuntu-linux:~$ ln -s soft.txt facts.txt
+elliot@ubuntu-linux:~$ ln -s facts.txt soft.txt
 ```
 
 And run the [file] command on [soft.txt]:
@@ -367,18 +353,6 @@ As you can see, the change is reflected in the file.
 Translating characters
 ======================
 
-
-You can use the [tr] command to translate characters. I am not
-talking about translating to different languages here; instead, I am
-using the second meaning of the word translate, that is, to change from
-one form to another.
-
-If you read the [man] page of the [tr] command, you will see
-in the description that it: **Translate\[s\]**, **squeeze\[s\]**,
-**and/or delete\[s\]** **characters from standard input, writing to
-standard output**. And so the [tr] command doesn't accept any
-arguments.
-
 One popular use of the [tr] command is to change lower case
 letters to upper case (or vice versa). For example, if you want to
 display all the words in [facts.txt] in upper case, you can run:
@@ -534,14 +508,6 @@ Swimming a
 Text processing with awk
 ========================
 
-
-[awk] is a very powerful tool you can use in Linux to analyze and
-process text. In fact, [awk] is not like any command you have
-learned so far, and that's because [awk] is actually a programming
-language. You will find books that are solely written to explain and
-discuss the use of [awk]. However, I am only going to show you the
-very basics of [awk] here, and you can dig further on your own.
-
 You can use [awk] to achieve the same functionality as the
 [cut] command. For example, to view the first word of each line in
 the file [facts.txt], you can run:
@@ -645,20 +611,7 @@ Wildcard characters
 
 
 The wildcard characters are special characters in Linux, and they are
-used to specify a group (class) of characters. Below table lists
-all the Linux wildcards:
-
-![](./images/10.png)
-
-You have already seen character classes before when we were discussing
-the [tr] command. Remember [\[:lower:\]] and
-[\[:upper:\]] represent lower and upper case letters, these are
-two examples of character classes. Below table lists the most
-common character classes:
-
-![](./images/11.png)
-
-Ok, enough with all that theory! Let's look at some examples. You can
+used to specify a group (class) of characters. Let's look at some examples. You can
 use the [\*] wildcard to list all the [txt] files in your
 home directory:
 
@@ -869,29 +822,6 @@ elliot@ubuntu-linux:~$ egrep "[[:digit:]]{1,}" practice.txt
 111222333
 my cell number is 123-456-789.
 ```
-
-You can also search for a specific pattern like telephone numbers:
-
-``` 
-elliot@ubuntu-linux:~$ egrep "[[:digit:]]{3}-[[:digit:]]{3}-[[:digit:]]{3}" 
-practice.txt
-my cell number is 123-456-789.
-```
-
-This will search for the lines that contain three digits followed by a
-dash, then three digits followed by another dash, then another three
-digits.
-
-I know you think [regex] is complicated, and it's hard to remember
-all of that, you are right! That's why there is a [man] page that
-has all the regular expressions we discussed:
-
-``` 
-elliot@ubuntu-linux:~$ man regex
-```
-
-Also, the [grep] man page includes explanations for all the
-regular expressions discussed in this chapter.
 
 
 Knowledge check
