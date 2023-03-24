@@ -1,6 +1,7 @@
 
 
-# How To Set Up an NFS Mount on Ubuntu 20.04
+Lab: Networked File Systems (NFS)
+=================================
 
 In this lab, we refer to the server that shares its
 directories as the **host** and the server that mounts these directories
