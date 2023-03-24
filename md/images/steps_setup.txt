@@ -26,3 +26,10 @@
   294  touch /home/elliot/Desktop/hello.txt
   295  mkdir /home/angela/Music
   296  touch /home/angela/Music/song.mp3
+
+
+apt install -y file
+apt-get install -y locate
+apt-get install -y lsof
+apt-get install -y traceroute
+apt-get install -y cron
