@@ -37,3 +37,39 @@ root@ubuntu-linux:~$ lsblk
 
 So from the output of the [lsblk] command, you can conclude that we
 only have one disk ([vda]) on my virtual machine.
+
+
+Logical Volume Manager - LVM
+============================
+
+
+Displaying Information About Physical Volumes, Volume Groups, and Logical Volumes
+Accessing information about the various LVM components on your system is essential for managing your physical and logical volumes. LVM provides a number of tools for displaying information about every layer in the LVM stack.
+
+**Install LVM Package**
+
+Install LVM package by running following command in the terminal:
+
+`apt-get install lvm2`
+
+
+**Displaying Information About All LVM Compatible Block Storage Devices**
+
+To display all of the available block storage devices that LVM can potentially manage, use the lvmdiskscan command:
+
+`sudo lvmdiskscan`
+
+![](./images/25.png)
+
+
+**Displaying Information about Physical Volumes**
+
+A header is written to storage devices to mark them as free to use as LVM components. Devices with these headers are called physical volumes.
+
+You can display all of the physical devices on your system by using lvmdiskscan with the -l option, which will only return physical volumes:
+
+`sudo lvmdiskscan -l`
+
+![](./images/26.png)
+
+Note we don't have any physical volume attached with the lab machine.
