@@ -7,17 +7,6 @@ In this lab, we refer to the server that shares its
 directories as the **host** and the server that mounts these directories
 as the **client**.
 
-**IMPORTANT:** Make sure to open new terminal and connect with Remote VM with NFS installed before running commands below:
-
-`ssh root@linux-admin-nfsX.courseware.io`
-
-Replace `X` with your VM number in the DNS above.
-
-**Password:** Will be provided by Instructor.
-
-![](./images/22.png)
-
-
 In this lab, we will refer to host and client IP addresses by the
 placeholders `host_ip` and `client_ip`.
 
